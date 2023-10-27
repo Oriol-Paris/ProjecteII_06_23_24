@@ -453,6 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1992760850}
+  movementScale: 50000
 --- !u!50 &1992760850
 Rigidbody2D:
   serializedVersion: 4
@@ -465,7 +466,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 80
   m_LinearDrag: 100
   m_AngularDrag: 0.05
   m_GravityScale: 0

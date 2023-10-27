@@ -6,61 +6,68 @@ public class player_movement : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D rb;
-    private Vector2 speedX = new Vector2(50000f, 0f);
-    private Vector2 speedY = new Vector2(0f, 50000f);
+    [SerializeField]
+    private float movementScale = 50.0f;
+    [SerializeField]
+    public int Health { get; private set; }//Public get, private set (todos pueden usarla pero no cambiarla)
+    private float xMovement = 0.0f;
+    private float yMovement = 0.0f;
+    
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("w"))
-        {
-            speedY.y = 50000f;
-            speedY.x = 0f;
-        }
-        if (Input.GetKey("s"))
-        {
-            speedY.y = -50000f;
-            speedY.x = 0f;
-        }
-        if (Input.GetKey("w") && Input.GetKey("s"))
-        {
-            speedY.y = 0f;
-            speedY.x = 0f;
-        }
-        if (Input.GetKey("a"))
-        {
-            speedX.y = 0f;
-            speedX.x = -50000f;
-        }
-        if (Input.GetKey("d"))
-        {
-            speedX.y = 0f;
-            speedX.x = 50000f;
-        }
-        if (Input.GetKey("a") && Input.GetKey("d"))
-        {
-            speedX.y = 0f;
-            speedX.x = 0f;
-        }
+        xMovement = Input.GetAxis("Horizontal");
+        yMovement = Input.GetAxis("Vertical");
+        //if (Input.GetKey("w"))
+        //{
+        //    yMovement = Input.GetAxis("Vertical");
+        //    xMovement = Input.GetAxis("Horizontal");
+        //}
+        //if (Input.GetKey("s"))
+        //{
+        //    yMovement = Input.GetAxis("Vertical");
+        //    xMovement = Input.GetAxis("Horizontal");
+        //}
+        //if (Input.GetKey("w") && Input.GetKey("s"))
+        //{
+
+        //}
+        //if (Input.GetKey("a"))
+        //{
+        //    xMovement = Input.GetAxis("Horizontal");
+        //    yMovement = Input.GetAxis("Vertical");
+        //}
+        //if (Input.GetKey("d"))
+        //{
+        //    yMovement = Input.GetAxis("Vertical");
+        //    xMovement = Input.GetAxis("Horizontal");
+        //}
+        //if (Input.GetKey("a") && Input.GetKey("d"))
+        //{
+
+        //}
     }
     void FixedUpdate()
     {
-        if (Input.GetKey("w"))
-        {
-            rb.AddForce(speedY * Time.deltaTime);
-        }
-        if (Input.GetKey("s"))
-        {
-            rb.AddForce(speedY * Time.deltaTime);
-        }
-        if (Input.GetKey("a"))
-        {
-            rb.AddForce(speedX * Time.deltaTime);
-        }
-        if (Input.GetKey("d"))
-        {
-            rb.AddForce(speedX * Time.deltaTime);
-        }
+        rb.AddForce(Vector2.right * xMovement * movementScale, ForceMode2D.Force);
+        rb.AddForce(Vector2.up * yMovement * movementScale, ForceMode2D.Force);
+        //if (Input.GetKey("w"))
+        //{
+        //    rb.AddForce(speedY * Time.deltaTime);
+        //}
+        //if (Input.GetKey("s"))
+        //{
+        //    rb.AddForce(speedY * Time.deltaTime);
+        //}
+        //if (Input.GetKey("a"))
+        //{
+        //    rb.AddForce(speedX * Time.deltaTime);
+        //}
+        //if (Input.GetKey("d"))
+        //{
+        //    rb.AddForce(speedX * Time.deltaTime);
+        //}
 
     }
 }
