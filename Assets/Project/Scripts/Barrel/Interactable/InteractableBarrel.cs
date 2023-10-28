@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class InteractableBarrel : WorldInteractable
 {
-    
+    public InteractableBarrel(int maxHealth)
+        : base(maxHealth) { }
 }

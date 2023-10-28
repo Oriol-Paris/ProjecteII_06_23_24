@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class SoggettoBlu : Soggetto
 {
-    
+    public SoggettoBlu(int maxHealth, Movement movement, Attack attack)
+        : base(maxHealth, movement, attack) { }
 }
