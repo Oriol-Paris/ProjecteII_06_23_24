@@ -973,7 +973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1992760850}
-  movementScale: 50000
+  movementScale: 500000
 --- !u!50 &1992760850
 Rigidbody2D:
   serializedVersion: 4
@@ -986,9 +986,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 80
-  m_LinearDrag: 100
-  m_AngularDrag: 0.05
+  m_Mass: 1
+  m_LinearDrag: 17500
+  m_AngularDrag: 10000
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
