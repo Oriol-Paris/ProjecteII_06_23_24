@@ -13,6 +13,10 @@ public class player_movement : MonoBehaviour
     private float xMovement = 0.0f;
     private float yMovement = 0.0f;
     
+    private void Start()
+    {
+        var pM = new PlayerMovement(rb, xMovement, yMovement, movementScale);
+    }
 
     // Update is called once per frame
     void Update()

@@ -5,20 +5,13 @@ using UnityEngine;
 public class EnemyMovement : Movement
 {
 
-    //[SerializeField]
-    //private Rigidbody2D _rb;
-    //[SerializeField]
-    //float _movementScale = 50.0f;
-    //float _xMovement;
-    //float _yMovement;
-
-    //public EnemyMovement(Rigidbody2D rb, float xMovement, float yMovement, float movementScale) : base(rb, xMovement, yMovement, movementScale)
-    //{
-    //    _rb = rb;
-    //    _xMovement = xMovement;
-    //    _yMovement = yMovement;
-    //    _movementScale = movementScale;
-    //}
+    public EnemyMovement(Rigidbody2D rb, float xMovement, float yMovement, float movementScale) : base(rb, xMovement, yMovement, movementScale)
+    {
+        m_rb = rb;
+        m_xMovement = xMovement;
+        m_yMovement = yMovement;
+        m_movementScale = movementScale;
+    }
 
     public override void GetMovementAxis()
     {
