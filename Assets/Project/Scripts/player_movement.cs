@@ -15,7 +15,7 @@ public class player_movement : MonoBehaviour
     
     private void Start()
     {
-        var pM = new PlayerMovement(rb, xMovement, yMovement, movementScale);
+        //var pM = new PlayerMovement(rb, xMovement, yMovement, movementScale);
     }
 
     // Update is called once per frame

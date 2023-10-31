@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ProjectileBarrel : Projectile
 {
+    public override void OnCollisionEnter2D()
+    {
 
+    }
 }
     

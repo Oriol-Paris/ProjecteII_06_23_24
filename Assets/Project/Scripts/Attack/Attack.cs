@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack 
+public abstract class Attack 
 {
+    protected int damage;
+
+    public abstract void AttackAction();
 }

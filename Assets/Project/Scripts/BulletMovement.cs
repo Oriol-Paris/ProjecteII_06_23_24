@@ -11,5 +11,10 @@ public class BulletMovement : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(Vector2.right * Time.deltaTime * speed);
+        OnCollisionEnter2D();
+    }
+    void OnCollisionEnter2D()
+    {
+        Destroy(this.gameObject, 10);
     }
 }
