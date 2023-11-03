@@ -6,15 +6,34 @@ public class BulletMovement : MonoBehaviour
 {
     [SerializeField]
     private float speed;
-
+    [SerializeField]
+    private Rigidbody2D rb;
+    [SerializeField]
+    Collision2D collision;
+    [SerializeField]
+    private Rigidbody2D _enemy;
+    [SerializeField]
+    public GameObject enemy;
     // Update is called once per frame
     void FixedUpdate()
     {
         transform.Translate(Vector2.right * Time.deltaTime * speed);
-        OnCollisionEnter2D();
+        Destroy(this.gameObject, 5);
     }
-    void OnCollisionEnter2D()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(this.gameObject, 10);
+        if (collision.gameObject.tag == "Wall")
+        {
+            Debug.Log("Wall");
+            Destroy(this.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Enemy");
+            Destroy(enemy);
+        }
+
+
     }
 }

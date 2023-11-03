@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class player_movement : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D rb;
     [SerializeField]
-    private float movementScale = 50.0f;
+    private float movementScale = 100.0f;
     [SerializeField]
+    public bool godMode;
     public int Health { get; private set; }//Public get, private set (todos pueden usarla pero no cambiarla)
-    private float xMovement = 0.0f;
-    private float yMovement = 0.0f;
+    Vector2 movementDir;
     
     private void Start()
     {
@@ -21,57 +22,26 @@ public class player_movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xMovement = Input.GetAxis("Horizontal");
-        yMovement = Input.GetAxis("Vertical");
-        //if (Input.GetKey("w"))
-        //{
-        //    yMovement = Input.GetAxis("Vertical");
-        //    xMovement = Input.GetAxis("Horizontal");
-        //}
-        //if (Input.GetKey("s"))
-        //{
-        //    yMovement = Input.GetAxis("Vertical");
-        //    xMovement = Input.GetAxis("Horizontal");
-        //}
-        //if (Input.GetKey("w") && Input.GetKey("s"))
-        //{
+        movementDir = Vector2.right * Input.GetAxis("Horizontal") + Vector2.up * Input.GetAxis("Vertical");
 
-        //}
-        //if (Input.GetKey("a"))
-        //{
-        //    xMovement = Input.GetAxis("Horizontal");
-        //    yMovement = Input.GetAxis("Vertical");
-        //}
-        //if (Input.GetKey("d"))
-        //{
-        //    yMovement = Input.GetAxis("Vertical");
-        //    xMovement = Input.GetAxis("Horizontal");
-        //}
-        //if (Input.GetKey("a") && Input.GetKey("d"))
-        //{
+        if (Gamepad.current.leftShoulder.IsPressed() || Input.GetButtonDown("p"))
+        {
+            godMode = !godMode;
+        }
 
-        //}
     }
     void FixedUpdate()
     {
-        rb.AddForce(Vector2.right * xMovement * movementScale, ForceMode2D.Force);
-        rb.AddForce(Vector2.up * yMovement * movementScale, ForceMode2D.Force);
-        //if (Input.GetKey("w"))
-        //{
-        //    rb.AddForce(speedY * Time.deltaTime);
-        //}
-        //if (Input.GetKey("s"))
-        //{
-        //    rb.AddForce(speedY * Time.deltaTime);
-        //}
-        //if (Input.GetKey("a"))
-        //{
-        //    rb.AddForce(speedX * Time.deltaTime);
-        //}
-        //if (Input.GetKey("d"))
-        //{
-        //    rb.AddForce(speedX * Time.deltaTime);
-        //}
+        if (movementDir.sqrMagnitude < 0.001f)
+            return;
 
+        bool alignedMovement = Vector2.Dot(rb.velocity.normalized, movementDir.normalized) > 0.0f;
+
+        Vector2 adjustedMovement = (movementDir.sqrMagnitude > 1f ? movementDir.normalized : movementDir) * movementScale * Time.fixedDeltaTime;
+        if (!alignedMovement)
+            adjustedMovement *= 2f;
+
+
+        rb.AddForce(adjustedMovement, ForceMode2D.Force);
     }
 }

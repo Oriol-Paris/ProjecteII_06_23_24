@@ -8,13 +8,11 @@ public class Shoot_enemy : MonoBehaviour
     private Rigidbody2D bullet;
     private float timeDuration = 3f * 1f;
     private float timer;
-    private float flashTimer;
-    private float flashDuration = 1f;
     // Update is called once per frame
 
     private void Start()
     {
-        ResetTimer();
+        timer = timeDuration;
     }
 
     void Update()
@@ -27,10 +25,6 @@ public class Shoot_enemy : MonoBehaviour
         {
             Flash();
         }
-    }
-    private void ResetTimer()
-    {
-        timer = timeDuration;
     }
     private void Flash()
     {
