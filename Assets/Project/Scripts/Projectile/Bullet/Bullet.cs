@@ -8,5 +8,6 @@ public abstract class Bullet : Projectile
     {
         Destroy(this.gameObject, 10);
     }
+
     public abstract void BulletMovement();
 }
