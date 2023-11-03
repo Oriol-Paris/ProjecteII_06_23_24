@@ -1192,6 +1192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5f20c9326577a4f9986c5b30e27ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
 --- !u!1 &2118629706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1207,9 @@ GameObject:
   - component: {fileID: 2118629709}
   - component: {fileID: 2118629708}
   - component: {fileID: 2118629712}
+  - component: {fileID: 2118629713}
+  - component: {fileID: 2118629714}
+  - component: {fileID: 2118629715}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1369,3 +1373,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b3fe263ec0ec14ab016d261068f54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2118629713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118629706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edfdc27c0117851478ba8612884972aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rb: {fileID: 2118629709}
+  objective: {fileID: 1992760850}
+  force: 500
+--- !u!114 &2118629714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118629706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce56ed480bab0f42a1f0901acb21f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 8707829343864375594, guid: a0609130b10b4eb4a80ab102f8f62b80, type: 3}
+--- !u!114 &2118629715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118629706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839a2375265d8e44586f6168158a8631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2118629709}
+  objective: {fileID: 1992760850}

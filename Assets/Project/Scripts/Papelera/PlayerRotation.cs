@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour
 {
-
+    [SerializeField]
+    private Rigidbody2D rb;
     // Update is called once per frame
     void Update()
     {
