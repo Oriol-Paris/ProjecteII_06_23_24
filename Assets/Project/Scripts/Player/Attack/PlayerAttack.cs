@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttack : Attack
 {
-
-    private Rigidbody2D bullet;
+    [SerializeField]
+    protected Rigidbody2D bullet;
+    [SerializeField]
+    PlayerMovement player;
+    private float timeDuration = 0.4f;
+    private float timer;
     private Transform playerTransform;
 
     public PlayerAttack(Rigidbody2D bullet, Transform playerTransform)
@@ -15,6 +20,22 @@ public class PlayerAttack : Attack
     }
     public override void AttackAction()
     {
-        Rigidbody2D bulletInstance = Object.Instantiate(bullet, playerTransform.position, playerTransform.rotation);
+        if (Input.GetMouseButtonDown(0) || Gamepad.current.rightTrigger.IsActuated())
+        {
+            if (!player.godMode)
+            {
+                if (timer > 0)
+                    timer -= Time.deltaTime;
+                else
+                {
+                    Instantiate(bullet, transform.position, transform.rotation);
+                    timer = timeDuration;
+                }
+            }
+
+            else
+                Instantiate(bullet, transform.position, transform.rotation);
+
+        }
     }
 }

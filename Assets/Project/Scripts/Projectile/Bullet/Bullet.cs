@@ -4,9 +4,19 @@ using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
-    public override void OnCollisionEnter2D()
+    [SerializeField]
+    protected float speed;
+    protected override void FixedUpdate()
     {
-        Destroy(this.gameObject, 10);
+        BulletMovement();
+    }
+    public override void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            Debug.Log("Wall");
+            Destroy(this.gameObject);
+        }
     }
 
     public abstract void BulletMovement();

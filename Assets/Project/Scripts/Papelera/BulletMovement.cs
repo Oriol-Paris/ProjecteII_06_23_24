@@ -6,12 +6,12 @@ public class BulletMovement : MonoBehaviour
 {
     [SerializeField]
     private float speed;
-    [SerializeField]
-    private Rigidbody2D rb;
-    [SerializeField]
-    Collision2D collision;
-    [SerializeField]
-    private Rigidbody2D _enemy;
+    //[SerializeField]
+    //private Rigidbody2D rb;
+    //[SerializeField]
+    //Collision2D collision;
+    //[SerializeField]
+    //private Rigidbody2D _enemy;
     [SerializeField]
     public GameObject enemy;
     // Update is called once per frame
