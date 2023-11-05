@@ -11,7 +11,7 @@ public class Shoot : MonoBehaviour
     private float timeDuration = 0.4f;
     private float timer;
     [SerializeField]
-    player_movement player;
+    PlayerMovement player;
     // Update is called once per frame
     void Update()
     {
