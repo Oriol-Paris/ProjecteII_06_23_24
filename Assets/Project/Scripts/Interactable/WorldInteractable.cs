@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldInteractable : Interactable, HealthManagement
+public class WorldInteractable : MonoBehaviour, Interactable, HealthManagement
 {
     protected int m_maxHealth;
     protected int m_currentHealth;

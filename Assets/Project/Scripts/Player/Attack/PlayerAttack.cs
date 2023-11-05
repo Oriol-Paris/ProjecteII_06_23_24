@@ -8,16 +8,16 @@ public class PlayerAttack : Attack
     [SerializeField]
     protected Rigidbody2D bullet;
     [SerializeField]
-    PlayerMovement player;
+    protected PlayerMovement player;
     private float timeDuration = 0.4f;
     private float timer;
-    private Transform playerTransform;
+    //private Transform playerTransform;
 
-    public PlayerAttack(Rigidbody2D bullet, Transform playerTransform)
-    {
-        this.bullet = bullet;
-        this.playerTransform = playerTransform;
-    }
+    //public PlayerAttack(Rigidbody2D bullet, Transform playerTransform)
+    //{
+    //    this.bullet = bullet;
+    //    this.playerTransform = playerTransform;
+    //}
     public override void AttackAction()
     {
         if (Input.GetMouseButtonDown(0) || Gamepad.current.rightTrigger.IsActuated())

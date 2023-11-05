@@ -11,7 +11,7 @@ public class PlayerMovement : Movement
     {
         movementDir = Vector2.right * Input.GetAxis("Horizontal") + Vector2.up * Input.GetAxis("Vertical");
 
-        if (Gamepad.current.leftShoulder.IsPressed() || Input.GetButtonDown("p"))
+        if (Gamepad.current.leftShoulder.IsActuated() || Input.GetButtonDown("p"))
         {
             godMode = !godMode;
         }
