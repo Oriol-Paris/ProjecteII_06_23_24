@@ -1,43 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
+
 
 public class SoggettoBluAttack : EnemyAttack
 {
-
+    [SerializeField]
     private Rigidbody2D bullet;
-    private Transform soggetoTransform;
-    private Vector2 destination;
-
     [SerializeField]
-    private Rigidbody2D player;
-    [SerializeField]
+    private float timeDuration = 2f * 1f;
+    private float timer;
 
-    private float timer = 0.0f;
-    private float interval = 3.0f;
-
-    public SoggettoBluAttack(Rigidbody2D bullet, Transform soggetoTransform, Rigidbody2D player)
+    private void Start()
     {
-        this.bullet = bullet;
-        this.soggetoTransform = soggetoTransform;
-        this.player = player;
-        destination = player.position;
+        timer = timeDuration;
     }
-
 
     public override void AttackAction()
     {
-        Rigidbody2D bulletInstance = Object.Instantiate(bullet, soggetoTransform.position, soggetoTransform.rotation);
-    }
-
-    private void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer >= interval) 
+        if (timer > 0)
         {
-            AttackAction();
-            timer = 0.0f;
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            Flash();
         }
     }
+
+    private void Flash()
+    {
+        if (timer <=0)
+        {
+            Instantiate(bullet, transform.position, transform.rotation);
+            timer = timeDuration;
+        }
+
+    }
+
+   
 }

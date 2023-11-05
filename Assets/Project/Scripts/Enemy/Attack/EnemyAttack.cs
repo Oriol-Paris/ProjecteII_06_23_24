@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class EnemyAttack : Attack
 {
 
-
     public override void AttackAction()
     {
 
