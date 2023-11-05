@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMovement : MonoBehaviour
+public class PlayerBullet : Bullet
 {
     [SerializeField]
     private float speed;
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public override void BulletMovement()
     {
         transform.Translate(Vector2.right * Time.deltaTime * speed);
     }
