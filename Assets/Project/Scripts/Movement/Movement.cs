@@ -7,8 +7,6 @@ public abstract class Movement : MonoBehaviour
     [SerializeField]
     protected Rigidbody2D m_rb;
     protected Vector2 movementDir;
-    protected float m_xMovement;
-    protected float m_yMovement;
     [SerializeField]
     protected float m_movementScale;
     protected virtual void Update()

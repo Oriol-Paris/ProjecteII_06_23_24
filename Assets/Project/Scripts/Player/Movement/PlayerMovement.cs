@@ -37,13 +37,13 @@ public class PlayerMovement : Movement
         m_rb.AddForce(adjustedMovement, ForceMode2D.Force);
     }
 
-    public Vector2 GetPlayerPos()
-    {
-        Vector2 playerPos;
+    //public Vector2 GetPlayerPos()
+    //{
+    //    Vector2 playerPos;
 
-        playerPos.x = m_xMovement;
-        playerPos.y = m_yMovement;
+    //    playerPos.x = m_xMovement;
+    //    playerPos.y = m_yMovement;
 
-        return playerPos;
-    }
+    //    return playerPos;
+    //}
 }
