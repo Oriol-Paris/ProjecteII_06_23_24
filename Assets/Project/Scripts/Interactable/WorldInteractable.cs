@@ -7,6 +7,18 @@ public class WorldInteractable : MonoBehaviour, Interactable, HealthManagement
     protected int m_maxHealth;
     protected int m_currentHealth;
 
+    protected virtual void Update()
+    {
+
+    }
+    protected virtual void FixedUpdate()
+    {
+        Interact();
+    }
+    public virtual void Interact()
+    {
+
+    }
     public WorldInteractable(int maxHealth)
     {
         m_maxHealth = maxHealth;

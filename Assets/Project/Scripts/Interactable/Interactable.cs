@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface Interactable
 {
-    protected virtual void Interact()
+    public virtual void Interact()
     {
 
     }
