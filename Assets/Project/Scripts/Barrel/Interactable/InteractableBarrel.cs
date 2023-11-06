@@ -19,7 +19,7 @@ public class InteractableBarrel : WorldInteractable
         position = objective.position;
         area.x = position.x - m_rb.position.x;
         area.y = position.y - m_rb.position.y;
-        if (Gamepad.current.aButton.IsActuated() || Input.GetButtonDown("e"))
+        if (Gamepad.current.aButton.IsActuated() || Input.GetKeyUp(KeyCode.E))
         {
             if(Mathf.Abs(area.x) < 2 && Mathf.Abs(area.y) < 2)
             {
