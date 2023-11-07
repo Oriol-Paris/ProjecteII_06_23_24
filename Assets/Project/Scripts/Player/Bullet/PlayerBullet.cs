@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : Bullet
+public class PlayerBullet : Projectile
 {
     [SerializeField]
     private float speed;
@@ -11,4 +11,5 @@ public class PlayerBullet : Bullet
     {
         transform.Translate(Vector2.right * Time.deltaTime * speed);
     }
+
 }

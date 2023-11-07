@@ -4,5 +4,19 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
-    public abstract void OnCollisionEnter2D();
+    float damage = 10f;
+    public abstract void BulletMovement();
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnCollision(collision);
+    }
+    public virtual void OnCollision(Collision2D collision)
+    {
+        HealthManagement hm = collision.transform.GetComponent<HealthManagement>();
+        if (hm != null)
+        {
+            hm.LoseHP(damage);
+        }
+        Destroy(this.gameObject, 10);
+    }
 }

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public interface HealthManagement
 {
-    int MaxHealth { get; }
-    int CurrentHealth { get; }
+    float MaxHealth { get; }
+    float CurrentHealth { get; }
 
-    void LoseHP(int amountLosed);
+    void LoseHP(float amountLosed);
 
-    void WinHP(int amountWon);
+    void WinHP(float amountWon);
+
+    void Die();
     
 }

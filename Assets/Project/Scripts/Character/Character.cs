@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Character : HealthManagement
 {
-    protected int m_maxHealth;
-    protected int m_currentHealth;
+    protected float m_maxHealth;
+    protected float m_currentHealth;
     protected Movement m_movement;
     protected Attack m_attack;
 
-    public Character(int maxHealth, Movement movement, Attack attack)
+    public Character(float maxHealth, Movement movement, Attack attack)
     {
         m_maxHealth = maxHealth;
         m_currentHealth = m_maxHealth;
@@ -17,17 +17,22 @@ public class Character : HealthManagement
         m_attack = attack;
     }
 
-    public int MaxHealth
+    public float MaxHealth
     {
         get { return m_maxHealth; }
     }
 
-    public int CurrentHealth
+    public float CurrentHealth
     {
         get { return m_currentHealth; }
     }
 
-    public void LoseHP(int amountLosed)
+    public void Die()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void LoseHP(float amountLosed)
     {
         m_currentHealth -= amountLosed;
         if (m_currentHealth < 0)
@@ -36,7 +41,7 @@ public class Character : HealthManagement
         }
     }
 
-    public void WinHP(int amountWon) 
+    public void WinHP(float amountWon) 
     {
         m_currentHealth += amountWon;
         if(m_currentHealth > 0)
