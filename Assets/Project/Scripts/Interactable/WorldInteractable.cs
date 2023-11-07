@@ -9,11 +9,11 @@ public class WorldInteractable : MonoBehaviour, Interactable, HealthManagement
 
     protected virtual void Update()
     {
-
+        Interact();
     }
     protected virtual void FixedUpdate()
     {
-        Interact();
+        
     }
     public virtual void Interact()
     {

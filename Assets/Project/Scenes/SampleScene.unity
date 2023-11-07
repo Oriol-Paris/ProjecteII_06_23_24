@@ -533,6 +533,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1122550137}
     - target: {fileID: 1379880219972407771, guid: cb1fe65afec83db469e316dd778a18f5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379880219972407771, guid: cb1fe65afec83db469e316dd778a18f5, type: 3}
       propertyPath: objective
       value: 
       objectReference: {fileID: 1992760850}
@@ -1302,7 +1306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rb: {fileID: 1992760850}
   m_movementScale: 7500
-  godMode: 0
+  godMode: 1
 --- !u!1 &2118629706
 GameObject:
   m_ObjectHideFlags: 0
