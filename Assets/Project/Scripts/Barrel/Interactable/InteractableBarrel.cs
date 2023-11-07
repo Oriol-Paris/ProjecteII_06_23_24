@@ -8,7 +8,9 @@ public class InteractableBarrel : WorldInteractable
     [SerializeField]
     private Rigidbody2D m_rb;
     [SerializeField]
-    private Rigidbody2D objective;
+    private Rigidbody2D grabbedBarrel;
+    [SerializeField]
+    private Rigidbody2D player;
     private Vector2 position;
     private Vector2 area;
     public InteractableBarrel(int maxHealth)
@@ -16,14 +18,15 @@ public class InteractableBarrel : WorldInteractable
 
     public override void Interact()
     {
-        position = objective.position;
+        position = player.position;
         area.x = position.x - m_rb.position.x;
         area.y = position.y - m_rb.position.y;
         if (Input.GetKey(KeyCode.E) || Gamepad.current.aButton.IsActuated())
         {
-            if(Mathf.Abs(area.x) < 2 && Mathf.Abs(area.y) < 2)
+            if(Mathf.Abs(area.x) < 1.1 && Mathf.Abs(area.y) < 1.6)
             {
                 Destroy(this.gameObject);
+                Instantiate(grabbedBarrel, player.transform.position, player.transform.rotation);
             }
 
             
