@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : HealthManagement
+public class Character : MonoBehaviour, HealthManagement
 {
+    [SerializeField]
     protected float m_maxHealth;
+    [SerializeField]
     protected float m_currentHealth;
+
+ 
     protected Movement m_movement;
     protected Attack m_attack;
 
@@ -37,7 +41,7 @@ public class Character : HealthManagement
         m_currentHealth -= amountLosed;
         if (m_currentHealth < 0)
         {
-            m_currentHealth = 0;
+            Die();
         }
     }
 
