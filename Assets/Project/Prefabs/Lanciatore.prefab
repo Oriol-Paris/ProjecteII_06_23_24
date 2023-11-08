@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7451668486131694504}
   - component: {fileID: 5171108433462943872}
   - component: {fileID: 33471466083490260}
+  - component: {fileID: 5888026916579416113}
   m_Layer: 7
   m_Name: Lanciatore
   m_TagString: Enemy
@@ -211,3 +212,17 @@ MonoBehaviour:
   bullet: {fileID: 8707829343864375594, guid: 7ed7fd9a818ef0a4e8cd9cbcbc9078ff, type: 3}
   timeDuration: 2
   timer: 0
+--- !u!114 &5888026916579416113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8122238505475478931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf37c265e17a0d44da106e051c7d4648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 50
+  m_currentHealth: 50

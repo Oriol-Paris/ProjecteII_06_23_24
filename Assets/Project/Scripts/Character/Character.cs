@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour, HealthManagement
+public class Character : MonoBehaviour
 {
     [SerializeField]
     protected float m_maxHealth;
@@ -21,19 +21,9 @@ public class Character : MonoBehaviour, HealthManagement
         m_attack = attack;
     }
 
-    public float MaxHealth
-    {
-        get { return m_maxHealth; }
-    }
-
-    public float CurrentHealth
-    {
-        get { return m_currentHealth; }
-    }
-
     public void Die()
     {
-        throw new System.NotImplementedException();
+        Destroy(this.gameObject);
     }
 
     public void LoseHP(float amountLosed)
@@ -54,6 +44,7 @@ public class Character : MonoBehaviour, HealthManagement
         }
     }
 
+   
 
 }
 

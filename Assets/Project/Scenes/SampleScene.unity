@@ -1250,26 +1250,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1992760853}
-    - target: {fileID: 1812702933131673895, guid: 9c6cb3aa210e7354aaf5044cb10e6274, type: 3}
-      propertyPath: timeDuration
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2776006600620345958, guid: 9c6cb3aa210e7354aaf5044cb10e6274, type: 3}
       propertyPath: m_Name
       value: Sogetto Rosso
       objectReference: {fileID: 0}
     - target: {fileID: 6513614517213082221, guid: 9c6cb3aa210e7354aaf5044cb10e6274, type: 3}
-      propertyPath: force
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6513614517213082221, guid: 9c6cb3aa210e7354aaf5044cb10e6274, type: 3}
       propertyPath: objective
       value: 
       objectReference: {fileID: 1992760850}
-    - target: {fileID: 6513614517213082221, guid: 9c6cb3aa210e7354aaf5044cb10e6274, type: 3}
-      propertyPath: m_movementScale
-      value: 70
-      objectReference: {fileID: 0}
     - target: {fileID: 6827674706904850704, guid: 9c6cb3aa210e7354aaf5044cb10e6274, type: 3}
       propertyPath: objective
       value: 

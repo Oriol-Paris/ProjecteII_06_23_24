@@ -22,17 +22,12 @@ public class BulletMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        Character hm = collision.transform.GetComponent<Character>();
+        if (hm != null)
         {
-            Debug.Log("Wall");
-            Destroy(this.gameObject);
+            hm.LoseHP(10f);
         }
-
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Enemy");
-            Destroy(enemy);
-        }
+        Destroy(this.gameObject, 10);
 
 
     }
