@@ -2,12 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldInteractable : Interactable, HealthManagement
+public class WorldInteractable : MonoBehaviour, Interactable, HealthManagement
 {
     protected float m_maxHealth;
     protected float m_currentHealth;
 
-    public WorldInteractable(int maxHealth)
+    protected virtual void Update()
+    {
+        Interact();
+    }
+    protected virtual void FixedUpdate()
+    {
+        
+    }
+    public virtual void Interact()
+    {
+
+    }
+    public WorldInteractable(float maxHealth)
     {
         m_maxHealth = maxHealth;
         m_currentHealth = m_maxHealth;
@@ -21,11 +33,6 @@ public class WorldInteractable : Interactable, HealthManagement
     public float CurrentHealth
     {
         get { return m_currentHealth; }
-    }
-
-    public void Die()
-    {
-        throw new System.NotImplementedException();
     }
 
     public void LoseHP(float amountLosed)
@@ -44,5 +51,9 @@ public class WorldInteractable : Interactable, HealthManagement
         {
             m_currentHealth = m_maxHealth;
         }
+    }
+    public void Die()
+    {
+        throw new System.NotImplementedException();
     }
 }

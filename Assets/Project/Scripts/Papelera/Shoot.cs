@@ -10,30 +10,36 @@ public class Shoot : MonoBehaviour
     private Rigidbody2D bullet;
     private float timeDuration = 0.4f;
     private float timer;
+    private bool shoot = true;
     [SerializeField]
     PlayerMovement player;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Gamepad.current.rightTrigger.IsActuated())
+        if (timer > 0)
+            timer -= Time.deltaTime;
+        else
+        {
+            timer = timeDuration;
+            shoot = true;
+        }
+        if (Input.GetMouseButton(0) || Gamepad.current.rightTrigger.IsActuated())
         {
             if (!player.godMode)
             {
-                if (timer > 0)
-                    timer -= Time.deltaTime;
-                else
+                if (shoot)
                 {
+                    timer -= Time.deltaTime;
                     Instantiate(bullet, transform.position, transform.rotation);
-                    timer = timeDuration;
+                    shoot = false;
                 }
             }
-            
             else
                 Instantiate(bullet, transform.position, transform.rotation);
-                
+
+
+
+
         }
-
-        
-
     }
 }
