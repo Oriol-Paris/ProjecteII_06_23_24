@@ -12,8 +12,8 @@ public class ProjectileBarrel : Projectile
     protected Rigidbody2D rb;
     public override void BulletMovement()
     {
-        transform.Translate(Vector2.right * Time.deltaTime * speed);
-        Destroy(this.gameObject, 5);
+        transform.Translate(Vector2.up * Time.deltaTime * speed);
+        Destroy(this.gameObject, 20);
     }
     protected override void OnCollisionEnter2D(Collision2D collision)
     {

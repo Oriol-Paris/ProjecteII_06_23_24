@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,13 @@ public class PlayerAttack : Attack
     [SerializeField]
     protected Rigidbody2D bullet;
     [SerializeField]
+    protected Rigidbody2D grabBarrel;
+    [SerializeField]
+    protected Rigidbody2D barrel;
+    [SerializeField]
     protected PlayerMovement player;
+    [SerializeField]
+    private GrabbedBarrel gBarrel;
     private float timeDuration = 0.4f;
     private float timer;
     private bool shoot = true;
@@ -30,17 +37,27 @@ public class PlayerAttack : Attack
         }
         if (Input.GetMouseButton(0) || Gamepad.current.rightTrigger.IsActuated())
         {
-            if (!player.godMode)
+            if (gBarrel.grabbed == false)
             {
-                if (shoot)
+                if (!player.godMode)
                 {
-                    timer -= Time.deltaTime;
-                    Instantiate(bullet, transform.position, player.transform.rotation);
-                    shoot = false;
+                    if (shoot)
+                    {
+                        timer -= Time.deltaTime;
+                        Instantiate(bullet, transform.position, player.transform.rotation);
+                        shoot = false;
+                    }
                 }
+                else
+                    Instantiate(bullet, transform.position, transform.rotation);
             }
             else
-                Instantiate(bullet, transform.position, transform.rotation);
+            {
+                Instantiate(barrel, transform.position, grabBarrel.transform.rotation);
+                //shoot = false;
+                //gBarrel.grabbed = false;
+            }
+            gBarrel.grabbed = false;
         }
     }
 }

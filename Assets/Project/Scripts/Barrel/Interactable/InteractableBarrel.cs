@@ -30,7 +30,6 @@ public class InteractableBarrel : WorldInteractable
                 Destroy(this.gameObject);
                 gBarrel.grabbed = true;
             }
-
             
         }
     }

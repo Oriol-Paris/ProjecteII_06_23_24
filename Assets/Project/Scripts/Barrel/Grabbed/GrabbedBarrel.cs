@@ -18,12 +18,14 @@ public class GrabbedBarrel : GrabbedObject
     {
         if (grabbed)
         {
-            m_rb.position = player.position/* + vector2.up*/;
+            m_rb.position = player.position;
             Vector3 mousePosition = Input.mousePosition;
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
             Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
             transform.up = direction;
         }
+        else
+            m_rb.transform.position = new Vector2(1000f, 1000f);
     }
     protected override void Move()
     {

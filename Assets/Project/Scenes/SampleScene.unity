@@ -298,6 +298,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec39a39063201641a76db18c0ef8d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &476515641 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 5777386239992965273, guid: e847359045716bd488c9a7cab7da6351, type: 3}
+  m_PrefabInstance: {fileID: 1561856775}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +530,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 514302986369291849, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
+      propertyPath: gBarrel
+      value: 
+      objectReference: {fileID: 476515640}
+    - target: {fileID: 514302986369291849, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
+      propertyPath: grabBarrel
+      value: 
+      objectReference: {fileID: 476515641}
+    - target: {fileID: 913043927197308703, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
+      propertyPath: godMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 970450496312169829, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
       propertyPath: m_BodyType
       value: 1
