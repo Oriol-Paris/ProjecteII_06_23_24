@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7451668486131694504}
-  objective: {fileID: 0}
+  objective: {fileID: 3491572017750475589, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
 --- !u!114 &33471466083490260
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class GrabbedBarrel : GrabbedObject
@@ -7,6 +8,7 @@ public class GrabbedBarrel : GrabbedObject
     Vector2 movementDir;
     [SerializeField]
     float m_movementScale;
+    public bool grabbed = false;
     protected override void Grab()
     {
         
@@ -14,23 +16,16 @@ public class GrabbedBarrel : GrabbedObject
     }
     protected override void Track()
     {
-        
-        //movementDir = Vector2.right * Input.GetAxis("Horizontal") + Vector2.up * Input.GetAxis("Vertical");
-        ////m_rb.position = player.position + Vector2.up;
+        if (grabbed)
+        {
+            m_rb.position = player.position/* + vector2.up*/;
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+            transform.up = direction;
+        }
     }
     protected override void Move()
     {
-        //transform.position = player.transform.position;
-        //if (movementDir.sqrMagnitude < 0.001f)
-        //    return;
-
-        //bool alignedMovement = Vector2.Dot(m_rb.velocity.normalized, movementDir.normalized) > 0.0f;
-
-        //Vector2 adjustedMovement = (movementDir.sqrMagnitude > 1f ? movementDir.normalized : movementDir) * m_movementScale * Time.fixedDeltaTime;
-        //if (!alignedMovement)
-        //    adjustedMovement *= 2f;
-
-
-        //m_rb.AddForce(adjustedMovement, ForceMode2D.Force);
     }
 }

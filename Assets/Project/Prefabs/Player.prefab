@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 290864108147665252}
-  - component: {fileID: 9202217601631055006}
+  - component: {fileID: 970450496312169829}
+  - component: {fileID: 514302986369291849}
   m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
@@ -32,7 +33,34 @@ Transform:
   m_Father: {fileID: 8666570909255167750}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9202217601631055006
+--- !u!50 &970450496312169829
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2180232162820120770}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &514302986369291849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +69,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2180232162820120770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed2b4d981ce2e9643801e921b62261c7, type: 3}
+  m_Script: {fileID: 11500000, guid: af551bbdfd2d47d42a8b0abd142c3418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8707829343864375594, guid: a0609130b10b4eb4a80ab102f8f62b80, type: 3}
@@ -81,7 +109,7 @@ Transform:
   m_Children:
   - {fileID: 290864108147665252}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5600057740017155331
 SpriteRenderer:

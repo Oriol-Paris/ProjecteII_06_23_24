@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3108984989868711723}
-  objective: {fileID: 0}
+  objective: {fileID: 3491572017750475589, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
 --- !u!114 &5029467815280135760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rb: {fileID: 3108984989868711723}
   m_movementScale: 100
-  objective: {fileID: 0}
+  objective: {fileID: 3491572017750475589, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
   force: 50
 --- !u!114 &4273327789029340957
 MonoBehaviour:

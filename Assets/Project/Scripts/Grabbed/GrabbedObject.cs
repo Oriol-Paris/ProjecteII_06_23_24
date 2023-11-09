@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrabbedObject : MonoBehaviour
 {
     [SerializeField]
-    protected GameObject player;
+    protected Rigidbody2D player;
     [SerializeField]
     protected Rigidbody2D m_rb;
 

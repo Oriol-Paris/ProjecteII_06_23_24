@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rb: {fileID: 6636825462442895756}
-  objective: {fileID: 0}
+  objective: {fileID: 3491572017750475589, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
   force: 300
 --- !u!114 &2872243139183808626
 MonoBehaviour:
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6636825462442895756}
-  objective: {fileID: 0}
+  objective: {fileID: 3491572017750475589, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
 --- !u!114 &1812702933131673895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rb: {fileID: 6636825462442895756}
   m_movementScale: 70
-  objective: {fileID: 0}
+  objective: {fileID: 3491572017750475589, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
   force: 20
 --- !u!114 &1443082706734327707
 MonoBehaviour:

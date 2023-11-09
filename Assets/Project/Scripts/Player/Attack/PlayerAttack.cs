@@ -11,6 +11,7 @@ public class PlayerAttack : Attack
     protected PlayerMovement player;
     private float timeDuration = 0.4f;
     private float timer;
+    private bool shoot = true;
     //private Transform playerTransform;
 
     //public PlayerAttack(Rigidbody2D bullet, Transform playerTransform)
@@ -20,22 +21,26 @@ public class PlayerAttack : Attack
     //}
     public override void AttackAction()
     {
-        if (Input.GetMouseButtonDown(0) || Gamepad.current.rightTrigger.IsActuated())
+        if (timer > 0)
+            timer -= Time.deltaTime;
+        else
+        {
+            timer = timeDuration;
+            shoot = true;
+        }
+        if (Input.GetMouseButton(0) || Gamepad.current.rightTrigger.IsActuated())
         {
             if (!player.godMode)
             {
-                if (timer > 0)
-                    timer -= Time.deltaTime;
-                else
+                if (shoot)
                 {
-                    Instantiate(bullet, transform.position, transform.rotation);
-                    timer = timeDuration;
+                    timer -= Time.deltaTime;
+                    Instantiate(bullet, transform.position, player.transform.rotation);
+                    shoot = false;
                 }
             }
-
             else
                 Instantiate(bullet, transform.position, transform.rotation);
-
         }
     }
 }

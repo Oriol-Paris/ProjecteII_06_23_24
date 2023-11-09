@@ -30,7 +30,7 @@ public class Shoot : MonoBehaviour
                 if (shoot)
                 {
                     timer -= Time.deltaTime;
-                    Instantiate(bullet, transform.position, transform.rotation);
+                    Instantiate(bullet, transform.position, player.transform.rotation);
                     shoot = false;
                 }
             }
