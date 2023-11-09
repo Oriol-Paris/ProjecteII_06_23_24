@@ -44,8 +44,9 @@ public class PlayerAttack : Attack
                     if (shoot)
                     {
                         timer -= Time.deltaTime;
-                        Instantiate(bullet, transform.position, player.transform.rotation);
+                        Instantiate(bullet, transform.position, transform.rotation);
                         shoot = false;
+                        timer = timeDuration;
                     }
                 }
                 else
@@ -54,7 +55,8 @@ public class PlayerAttack : Attack
             else
             {
                 Instantiate(barrel, transform.position, grabBarrel.transform.rotation);
-                //shoot = false;
+                shoot = false;
+                timer = timeDuration;
                 //gBarrel.grabbed = false;
             }
             gBarrel.grabbed = false;

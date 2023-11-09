@@ -24,7 +24,7 @@ public class PlayerBullet : Projectile
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Enemy");
-            Destroy(enemy);
+            Destroy(this.gameObject);
         }
     }
 }
