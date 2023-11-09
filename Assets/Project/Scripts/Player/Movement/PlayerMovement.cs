@@ -17,6 +17,7 @@ public class PlayerMovement : Movement
     [SerializeField]
     private float dashTime = 0.5f;
     private float dashTimer;
+    private Vector2 cDir;
     public override void GetMovementAxis()
     {
         if (dash)
@@ -26,12 +27,14 @@ public class PlayerMovement : Movement
         movementDir = Vector2.right * Input.GetAxis("Horizontal") + Vector2.up * Input.GetAxis("Vertical");
         Vector2 move = Vector2.right * (m_rb.velocity.normalized) +  (movementDir.normalized);
 
+        cDir = Vector2.right * Input.GetAxis("Mouse X") + Vector2.down * Input.GetAxis("Mouse Y");
+
         //Vector3  mousePosition = Mouse.current.position.ReadValue();
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
         transform.right = direction;
-
+        transform.right = cDir;
         if (Input.GetKey(KeyCode.G) || Gamepad.current.leftShoulder.IsActuated())
         {
             godMode = !godMode;
