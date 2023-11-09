@@ -551,8 +551,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 913043927197308703, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
+      propertyPath: cooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 913043927197308703, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
       propertyPath: dashSpeed
-      value: 5000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 970450496312169829, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
       propertyPath: m_Mass

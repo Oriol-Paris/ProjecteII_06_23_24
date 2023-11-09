@@ -26,6 +26,7 @@ public class PlayerMovement : Movement
         movementDir = Vector2.right * Input.GetAxis("Horizontal") + Vector2.up * Input.GetAxis("Vertical");
         Vector2 move = Vector2.right * (m_rb.velocity.normalized) +  (movementDir.normalized);
 
+        //Vector3  mousePosition = Mouse.current.position.ReadValue();
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
@@ -35,15 +36,6 @@ public class PlayerMovement : Movement
         {
             godMode = !godMode;
         }
-
-        if (Input.GetMouseButton(1) || Gamepad.current.bButton.IsActuated())
-        {
-            dash = true;
-            StartCoroutine(Dash());
-        }
-
-
-
     }
 
     public override void Move()
@@ -52,10 +44,6 @@ public class PlayerMovement : Movement
         {
             return;
         }
-        //Vector3  mousePosition = Mouse.current.position.ReadValue();
-        
-
-
         if (movementDir.sqrMagnitude < 0.001f)
             return;
 
@@ -89,22 +77,25 @@ public class PlayerMovement : Movement
         //{
         //    cooldownTimer -= Time.deltaTime;
         //}
-        //if (Input.GetMouseButton(1) || Gamepad.current.bButton.IsActuated())
+        //if (cooldownTimer <= 0)
         //{
-        //    m_rb.velocity = movementDir * m_movementScale/250;
+
         //}
-    }
-    IEnumerator Dash()
-    {
-        dash = true;
-        m_rb.velocity = movementDir * dashSpeed;
-        yield return new WaitForSeconds(dashTime);
-        dash = false;
+        //else (cooldownTimer > 0)
+        //{
+        //    cooldownTimer -= Time.deltaTime;
+        //}
+        if ((Input.GetMouseButtonDown(1) || Gamepad.current.buttonEast.IsActuated()))
+        {
+            m_rb.velocity = movementDir * dashSpeed;
+            //cooldownTimer = cooldown;
+        }
+        
     }
     protected override void Update()
     {
         GetMovementAxis();
-        Dash();
+        //Dash();
     }
     protected override void FixedUpdate()
     {
