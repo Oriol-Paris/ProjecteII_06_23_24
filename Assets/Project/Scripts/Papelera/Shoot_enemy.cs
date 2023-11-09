@@ -7,7 +7,7 @@ public class Shoot_enemy : MonoBehaviour
     [SerializeField]
     private Rigidbody2D bullet;
     [SerializeField]
-    private float timeDuration = 3f * 1f;
+    private float timeDuration = 3f;
     [SerializeField]
 
     private float timer;
