@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoggettoRossoMovement : SoggettoMovement
 {
-    protected override void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (destination != null)
         {

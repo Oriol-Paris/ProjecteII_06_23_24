@@ -8,7 +8,10 @@ public class Character : MonoBehaviour
     protected float m_maxHealth;
     [SerializeField]
     protected float m_currentHealth;
+    [SerializeField]
+    private Rigidbody2D explosion;
 
+    public bool isDead = false;
  
     protected Movement m_movement;
     protected Attack m_attack;
@@ -23,7 +26,9 @@ public class Character : MonoBehaviour
 
     public void Die()
     {
+        Debug.Log("Explode0");
         Destroy(this.gameObject);
+        isDead = true;
     }
 
     public void LoseHP(float amountLosed)
@@ -32,6 +37,9 @@ public class Character : MonoBehaviour
         if (m_currentHealth < 0)
         {
             Die();
+            Debug.Log("Explode1");
+            Instantiate(explosion, transform.position, transform.rotation);
+            
         }
     }
 
@@ -42,6 +50,22 @@ public class Character : MonoBehaviour
         {
             m_currentHealth = m_maxHealth;
         }
+    }
+
+    public void ChangeMaxHP(float amount)
+    {
+        m_maxHealth = amount;
+        m_currentHealth = m_maxHealth;
+    }
+
+    public float GetHP()
+    {
+        return m_currentHealth;
+    }
+
+    public float GetMaxHP()
+    {
+        return m_maxHealth;
     }
 
    

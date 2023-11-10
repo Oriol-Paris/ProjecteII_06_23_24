@@ -23,4 +23,14 @@ public class SoggettoMovement : Movement
         m_rb.AddForce(adjustedMovement, ForceMode2D.Force);
         
     }
+
+    protected override void FixedUpdate()
+    {
+        Move();
+    }
+
+    protected override void Update()
+    {
+        GetMovementAxis();
+    }
 }
