@@ -11,4 +11,14 @@ public class EnemyMovement : Movement
     public override void Move()
     {
     }
+
+    protected override void FixedUpdate()
+    {
+        Move();  
+    }
+
+    protected override void Update()
+    {
+        GetMovementAxis();
+    }
 }

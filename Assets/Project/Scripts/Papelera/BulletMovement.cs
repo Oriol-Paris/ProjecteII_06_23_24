@@ -14,6 +14,8 @@ public class BulletMovement : MonoBehaviour
     private Rigidbody2D _enemy;
     [SerializeField]
     public GameObject enemy;
+    [SerializeField]
+    public float damage = 10f;
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -25,10 +27,30 @@ public class BulletMovement : MonoBehaviour
         Character hm = collision.transform.GetComponent<Character>();
         if (hm != null)
         {
-            hm.LoseHP(10f);
+            hm.LoseHP(damage);
         }
         Destroy(this.gameObject, 10);
 
+        if (collision.gameObject.tag == "Wall")
+        {
+            Debug.Log("Wall");
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Barrel")
+        {
+            Debug.Log("Barrel");
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Player");
+            Destroy(this.gameObject);
+        }
 
+    }
+
+    public void ChangeDamage(float amount)
+    {
+        damage = amount;
     }
 }

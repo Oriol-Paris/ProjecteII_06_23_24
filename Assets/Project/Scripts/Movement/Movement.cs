@@ -9,14 +9,8 @@ public abstract class Movement : MonoBehaviour
     protected Vector2 movementDir;
     [SerializeField]
     protected float m_movementScale;
-    protected virtual void Update()
-    {
-        GetMovementAxis();
-    }
-    protected virtual void FixedUpdate()
-    {
-        Move();
-    }
+    protected abstract void Update();
+    protected abstract void FixedUpdate();
     public abstract void GetMovementAxis();
     
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoggettoBluMovement : SoggettoMovement
 {
-    protected override void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (destination != null)
         {
