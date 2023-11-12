@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5777386239992965273}
   - component: {fileID: 2636135055555892943}
   - component: {fileID: 9201623993889275658}
+  - component: {fileID: 659566117144135125}
   m_Layer: 0
   m_Name: BarrelInteractable
   m_TagString: Barrel
@@ -102,12 +103,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 100
   m_currentHealth: 100
+  explosivebarrel: 0
   explosion: {fileID: 3773607828734962923, guid: 0ad4c2a26df59d64ea2d6318e5396aed, type: 3}
   m_rb: {fileID: 5777386239992965273}
   grabbedBarrel: {fileID: 5777386239992965273, guid: e847359045716bd488c9a7cab7da6351, type: 3}
   player: {fileID: 3491572017750475589, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
   gBarrel: {fileID: 0}
   cooldown: 0.25
+  colorChanger: {fileID: 659566117144135125}
 --- !u!50 &5777386239992965273
 Rigidbody2D:
   serializedVersion: 4
@@ -196,3 +199,15 @@ MonoBehaviour:
   m_currentHealth: 100
   m_object: {fileID: 8876385940642251664}
   isDead: 0
+--- !u!114 &659566117144135125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8876385940642251664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd22ab26b92495458d27bc207db33d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

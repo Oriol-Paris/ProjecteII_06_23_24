@@ -8,6 +8,8 @@ using UnityEngine.TextCore.Text;
 public class InteractableBarrel : WorldInteractable
 {
     [SerializeField]
+    private bool explosive = false;
+    [SerializeField]
     private GameObject explosion;
     [SerializeField]
     private Rigidbody2D m_rb;
@@ -21,6 +23,8 @@ public class InteractableBarrel : WorldInteractable
     private GrabbedBarrel gBarrel;
     [SerializeField]
     private float cooldown = 0.25f;
+    [SerializeField]
+    public ColorChanger colorChanger;
     private bool isDead;
     private bool hasExploded = false;
     public InteractableBarrel(int maxHealth)
@@ -30,19 +34,27 @@ public class InteractableBarrel : WorldInteractable
     {
         Character character = GetComponent<Character>();
         isDead = character.isDead;
-    }
+        if (explosive)
+            colorChanger.ChangeColor(Color.red);
+}
     public override void Interact()
     {
         Character character = GetComponent<Character>();
         isDead = character.isDead;
         if (character.isDead)
         {
-            Debug.Log("Explode111111111111111111111111");
-            if (!hasExploded)
+            if (explosive)
             {
-                StartCoroutine(Explosion());
-                hasExploded = true;
+                Debug.Log("Explode111111111111111111111111");
+                if (!hasExploded)
+                {
+                    StartCoroutine(Explosion());
+                    hasExploded = true;
+                }
             }
+            else
+                Destroy(this.gameObject);
+
         }
         position = player.position;
         area.x = position.x - m_rb.position.x;
@@ -53,6 +65,14 @@ public class InteractableBarrel : WorldInteractable
             {
                 Destroy(this.gameObject);
                 gBarrel.grabbed = true;
+                if (explosive)
+                {
+                    gBarrel.explosive = true;
+                }
+                else
+                {
+                    gBarrel.explosive = false;
+                }
                 
             }
             

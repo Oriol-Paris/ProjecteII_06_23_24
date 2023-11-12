@@ -8,11 +8,20 @@ public class GrabbedBarrel : GrabbedObject
     Vector2 movementDir;
     [SerializeField]
     float m_movementScale;
+    [SerializeField]
+    public ColorChanger colorChanger;
+    [SerializeField]
+    public Color originalColor;
     public bool grabbed = false;
+    public bool explosive = false;
     protected override void Grab()
     {
-        
-        //Instantiate(m_rb, transform.position, transform.rotation);
+        //if (explosive)
+        //    colorChanger.ChangeColor(Color.red);
+        //else
+        //{
+        //    colorChanger.ChangeColor(originalColor);
+        //}
     }
     protected override void Track()
     {
@@ -27,6 +36,7 @@ public class GrabbedBarrel : GrabbedObject
         else
             m_rb.transform.position = new Vector2(1000f, 1000f);
     }
+
     protected override void Move()
     {
     }

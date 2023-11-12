@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3943324425870831573}
   - component: {fileID: 5777386239992965273}
   - component: {fileID: -8434661935196266759}
+  - component: {fileID: 192284043802204687}
   m_Layer: 0
   m_Name: BarrellGrabbed
   m_TagString: Barrel
@@ -128,4 +129,19 @@ MonoBehaviour:
   player: {fileID: 3491572017750475589, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
   m_rb: {fileID: 5777386239992965273}
   m_movementScale: 0
+  colorChanger: {fileID: 192284043802204687}
+  originalColor: {r: 0.3882353, g: 0.13725491, b: 0.08235294, a: 1}
   grabbed: 0
+  explosive: 0
+--- !u!114 &192284043802204687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8876385940642251664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd22ab26b92495458d27bc207db33d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
