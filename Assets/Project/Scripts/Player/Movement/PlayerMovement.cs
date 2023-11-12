@@ -21,10 +21,10 @@ public class PlayerMovement : Movement
     bool controller;
     public override void GetMovementAxis()
     {
-        if (dash)
-        {
-            return;
-        }
+        //if (dash)
+        //{
+        //    return;
+        //}
         movementDir = Vector2.right * Input.GetAxis("Horizontal") + Vector2.up * Input.GetAxis("Vertical");
         Vector2 move = Vector2.right * (m_rb.velocity.normalized) +  (movementDir.normalized);
 
@@ -42,18 +42,26 @@ public class PlayerMovement : Movement
         {
             controller = !controller;
         }
-        if (Input.GetKey(KeyCode.G) || Gamepad.current.leftShoulder.IsActuated())
+        if (Input.GetKeyDown(KeyCode.G) || Gamepad.current.leftShoulder.IsActuated())
         {
             godMode = !godMode;
+        }
+        if (Input.GetMouseButtonDown(1)/* || Gamepad.current.buttonEast.IsActuated()*/)
+        {
+            //m_rb.velocity = movementDir * dashSpeed*4;
+            //cooldownTimer = cooldown;
+            //dashTimer = dashTime;
+            //dash = true;
+            Debug.Log("DASH");
         }
     }
 
     public override void Move()
     {
-        if (dash)
-        {
-            return;
-        }
+        //if (dash)
+        //{
+        //    return;
+        //}
         if (movementDir.sqrMagnitude < 0.001f)
             return;
 
@@ -67,6 +75,18 @@ public class PlayerMovement : Movement
         //if(cooldownTimer < 0)
         m_rb.AddForce(adjustedMovement, ForceMode2D.Force);
 
+        //if (dash == true)
+        //{
+        //    m_rb.velocity = movementDir * dashSpeed;
+        //}
+        //if (dashTimer > 0f)
+        //{
+        //    dashTimer -= Time.deltaTime;
+        //    if (dashTimer <= 0f)
+        //    {
+        //        dash = false;
+        //    }
+        //}
         //if (Input.GetMouseButton(1) || Gamepad.current.bButton.IsActuated())
         //{
         //    if (cooldownTimer <= 0)
@@ -97,16 +117,17 @@ public class PlayerMovement : Movement
         //}
     }
 
-    public void Dash()
-    {
-        if ((Input.GetMouseButtonDown(1) || Gamepad.current.buttonEast.IsActuated()))
-        {
-            m_rb.velocity = movementDir * dashSpeed;
-            //cooldownTimer = cooldown;
-        }
+    //public void Dash()
+    //{
+    //    if ((Input.GetMouseButtonDown(1) || Gamepad.current.buttonEast.IsActuated()))
+    //    {
+    //        m_rb.velocity = movementDir * dashSpeed;
+    //        //cooldownTimer = cooldown;
+    //        print("DASH");
+    //    }
 
-        print("DASH");
-    }
+        
+    //}
 
     void Start()
     {
@@ -121,7 +142,7 @@ public class PlayerMovement : Movement
     {
         Move();
 
-        Dash();
+        //Dash();
         
     }
     void OnDrawGizmos()

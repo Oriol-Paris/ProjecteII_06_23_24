@@ -16,6 +16,12 @@ public class PlayerBullet : Projectile
     }
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
+        Character hm = collision.transform.GetComponent<Character>();
+        if (hm != null)
+        {
+            hm.LoseHP(damage);
+        }
+        Destroy(this.gameObject, 10);
         if (collision.gameObject.tag == "Wall")
         {
             Debug.Log("Wall");
@@ -31,5 +37,9 @@ public class PlayerBullet : Projectile
             Debug.Log("Barrel");
             Destroy(this.gameObject);
         }
+    }
+    public void ChangeDamage(float amount)
+    {
+        damage = amount;
     }
 }

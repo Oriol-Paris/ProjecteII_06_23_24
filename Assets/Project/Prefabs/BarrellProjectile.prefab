@@ -171,8 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d80c97881930a549bcf6cb9259b5794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 40
   enemy: {fileID: 0}
   speed: 10
-  rb: {fileID: 0}
-  explosion: {fileID: -7704946142563951954, guid: 0ad4c2a26df59d64ea2d6318e5396aed, type: 3}
-  cooldown: 1
+  rb: {fileID: 5777386239992965273}
+  explosion: {fileID: 3773607828734962923, guid: 0ad4c2a26df59d64ea2d6318e5396aed, type: 3}
+  cooldown: 0.25

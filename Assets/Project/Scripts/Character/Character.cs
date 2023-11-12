@@ -8,8 +8,6 @@ public class Character : MonoBehaviour
     protected float m_maxHealth;
     [SerializeField]
     protected float m_currentHealth;
-    [SerializeField]
-    private Rigidbody2D explosion;
 
     public bool isDead = false;
  
@@ -24,22 +22,20 @@ public class Character : MonoBehaviour
         m_attack = attack;
     }
 
-    public void Die()
+    public virtual void Die()
     {
         Debug.Log("Explode0");
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject, 5);
         isDead = true;
     }
 
     public void LoseHP(float amountLosed)
     {
         m_currentHealth -= amountLosed;
-        if (m_currentHealth < 0)
+        if (m_currentHealth <= 0)
         {
             Die();
             Debug.Log("Explode1");
-            Instantiate(explosion, transform.position, transform.rotation);
-            
         }
     }
 

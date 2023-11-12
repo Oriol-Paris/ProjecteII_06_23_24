@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
+    [SerializeField]
     protected float damage = 10;
     public abstract void BulletMovement();
     protected virtual void FixedUpdate()
