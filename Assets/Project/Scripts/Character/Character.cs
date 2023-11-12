@@ -8,6 +8,8 @@ public class Character : MonoBehaviour
     protected float m_maxHealth;
     [SerializeField]
     protected float m_currentHealth;
+    [SerializeField]
+    protected GameObject m_object;
 
     public bool isDead = false;
  
@@ -25,7 +27,10 @@ public class Character : MonoBehaviour
     public virtual void Die()
     {
         Debug.Log("Explode0");
-        //Destroy(this.gameObject, 5);
+        //if (m_object.tag != "barrel" || m_object.tag == null)
+        //    Destroy(this.gameObject);
+        //else
+            Destroy(this.gameObject);
         isDead = true;
     }
 

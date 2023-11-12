@@ -22,6 +22,7 @@ public class InteractableBarrel : WorldInteractable
     [SerializeField]
     private float cooldown = 0.25f;
     private bool isDead;
+    private bool hasExploded = false;
     public InteractableBarrel(int maxHealth)
         : base(maxHealth) { }
 
@@ -37,8 +38,11 @@ public class InteractableBarrel : WorldInteractable
         if (character.isDead)
         {
             Debug.Log("Explode111111111111111111111111");
-            StartCoroutine(Explosion());
-            Destroy(this.gameObject, 10);
+            if (!hasExploded)
+            {
+                StartCoroutine(Explosion());
+                hasExploded = true;
+            }
         }
         position = player.position;
         area.x = position.x - m_rb.position.x;
@@ -60,6 +64,7 @@ public class InteractableBarrel : WorldInteractable
         GameObject explosionInstance = Instantiate(explosion, transform.position, transform.rotation);
         yield return new WaitForSeconds(cooldown);
         Destroy(explosionInstance);
+        Destroy(this.gameObject);
     }
     public override void Die()
     {

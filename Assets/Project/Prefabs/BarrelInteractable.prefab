@@ -107,7 +107,6 @@ MonoBehaviour:
   grabbedBarrel: {fileID: 5777386239992965273, guid: e847359045716bd488c9a7cab7da6351, type: 3}
   player: {fileID: 3491572017750475589, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
   gBarrel: {fileID: 0}
-  IBarrel: {fileID: 9201623993889275658}
   cooldown: 0.25
 --- !u!50 &5777386239992965273
 Rigidbody2D:
@@ -195,5 +194,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 100
   m_currentHealth: 100
-  explosion: {fileID: 0}
+  m_object: {fileID: 8876385940642251664}
   isDead: 0
