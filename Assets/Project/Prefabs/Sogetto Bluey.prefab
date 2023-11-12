@@ -212,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 40
   m_currentHealth: 40
-  explosion: {fileID: 0}
+  m_object: {fileID: 677076062269209825}
   isDead: 0
 --- !u!1 &5606622018355643838
 GameObject:

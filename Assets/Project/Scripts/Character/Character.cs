@@ -27,11 +27,11 @@ public class Character : MonoBehaviour
     public virtual void Die()
     {
         Debug.Log("Explode0");
-        //if (m_object.tag != "barrel" || m_object.tag == null)
-        //    Destroy(this.gameObject);
-        //else
+        if (m_object.tag != "Barrel"/* || m_object.tag == null*/)
             Destroy(this.gameObject);
+
         isDead = true;
+
     }
 
     public void LoseHP(float amountLosed)

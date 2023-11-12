@@ -73,10 +73,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8707829343864375594, guid: a0609130b10b4eb4a80ab102f8f62b80, type: 3}
+  bigBullet: {fileID: 0}
   grabBarrel: {fileID: 0}
   barrel: {fileID: 5777386239992965273, guid: 26571e329ec00724ab91c62c1ad39a06, type: 3}
   player: {fileID: 913043927197308703}
   gBarrel: {fileID: 0}
+  bulletBig: 0
 --- !u!1 &6485701079622173123
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,4 +263,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 100
   m_currentHealth: 100
+  m_object: {fileID: 6485701079622173123}
   isDead: 0

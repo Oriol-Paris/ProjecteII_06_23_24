@@ -226,5 +226,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 50
   m_currentHealth: 50
-  explosion: {fileID: 0}
+  m_object: {fileID: 8122238505475478931}
   isDead: 0
