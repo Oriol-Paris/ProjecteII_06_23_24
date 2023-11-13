@@ -178,6 +178,9 @@ MonoBehaviour:
   rb: {fileID: 5777386239992965273}
   explosion: {fileID: 3773607828734962923, guid: 0ad4c2a26df59d64ea2d6318e5396aed, type: 3}
   cooldown: 0.25
+  grabbedBarrel: {fileID: -8434661935196266759, guid: e847359045716bd488c9a7cab7da6351, type: 3}
+  colorChanger: {fileID: 6388972264999515982}
+  explosive: 0
 --- !u!114 &6388972264999515982
 MonoBehaviour:
   m_ObjectHideFlags: 0

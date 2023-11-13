@@ -12,16 +12,19 @@ public class GrabbedBarrel : GrabbedObject
     public ColorChanger colorChanger;
     [SerializeField]
     public Color originalColor;
+    [SerializeField]
+    InteractableBarrel interactableBarrel;
     public bool grabbed = false;
-    public bool explosive = false;
+    public bool explosive;
     protected override void Grab()
     {
-        //if (explosive)
-        //    colorChanger.ChangeColor(Color.red);
-        //else
-        //{
-        //    colorChanger.ChangeColor(originalColor);
-        //}
+        explosive = interactableBarrel.explosive;
+        if (explosive)
+            colorChanger.ChangeColor(Color.red);
+        else
+        {
+            Invoke("RevertColor", 0);
+        }
     }
     protected override void Track()
     {
@@ -35,9 +38,5 @@ public class GrabbedBarrel : GrabbedObject
         }
         else
             m_rb.transform.position = new Vector2(1000f, 1000f);
-    }
-
-    protected override void Move()
-    {
     }
 }

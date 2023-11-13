@@ -14,42 +14,54 @@ public class ProjectileBarrel : Projectile
     public GameObject explosion;
     [SerializeField]
     private float cooldown = 0.25f;
+    [SerializeField]
+    GrabbedBarrel grabbedBarrel;
+    [SerializeField]
+    public ColorChanger colorChanger;
     private bool hasExploded = false;
+    public bool explosive;
     public override void BulletMovement()
     {
+        if (explosive)
+        {
+            colorChanger.ChangeColor(Color.red);
+        }
         transform.Translate(Vector2.up * Time.deltaTime * speed);
         Destroy(this.gameObject, 20);
         
     }
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!hasExploded)
-        {
-            StartCoroutine(Explosion());
-            hasExploded = true;
-        }
-        Destroy(this.gameObject, 10);
-        rb.transform.position = new Vector2(1000f, 1000f);
         Character hm = collision.transform.GetComponent<Character>();
         if (hm != null)
         {
             hm.LoseHP(damage);
         }
-        if (collision.gameObject.tag == "Wall")
+
+        if (explosive)
         {
-            Debug.Log("Wall");
-            //Instantiate(explosion, transform.position, transform.rotation);
-            //Destroy(this.gameObject);
+            if (!hasExploded)
+            {
+                StartCoroutine(Explosion());
+                hasExploded = true;
+            }
+            Destroy(this.gameObject, 10);
+            rb.transform.position = new Vector2(1000f, 1000f);
         }
-        if (collision.gameObject.tag == "Enemy")
+        else
         {
-            Debug.Log("Enemy");
-            //Instantiate(explosion, transform.position, transform.rotation);
-            //Destroy(this.gameObject);
+            if (collision.gameObject.tag == "Wall")
+            {
+                Debug.Log("Wall");
+                Destroy(this.gameObject, 10);
+                rb.transform.position = new Vector2(1000f, 1000f);
+            }
+            if (collision.gameObject.tag == "Enemy")
+            {
+                Debug.Log("Enemy");
+            }
         }
         
-        Destroy(this.gameObject, 10);
-        rb.transform.position = new Vector2(1000f, 1000f);
     }
     public override void OnCollision(Collision2D collision)
     {

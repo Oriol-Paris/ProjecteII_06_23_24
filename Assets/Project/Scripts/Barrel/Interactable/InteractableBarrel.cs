@@ -8,7 +8,7 @@ using UnityEngine.TextCore.Text;
 public class InteractableBarrel : WorldInteractable
 {
     [SerializeField]
-    private bool explosive = false;
+    public bool explosive = false;
     [SerializeField]
     private GameObject explosion;
     [SerializeField]
@@ -21,6 +21,8 @@ public class InteractableBarrel : WorldInteractable
     private Vector2 area;
     [SerializeField]
     private GrabbedBarrel gBarrel;
+    [SerializeField]
+    private ProjectileBarrel projectileBarrel;
     [SerializeField]
     private float cooldown = 0.25f;
     [SerializeField]
@@ -35,7 +37,9 @@ public class InteractableBarrel : WorldInteractable
         Character character = GetComponent<Character>();
         isDead = character.isDead;
         if (explosive)
+        {
             colorChanger.ChangeColor(Color.red);
+        }
 }
     public override void Interact()
     {
@@ -45,7 +49,6 @@ public class InteractableBarrel : WorldInteractable
         {
             if (explosive)
             {
-                Debug.Log("Explode111111111111111111111111");
                 if (!hasExploded)
                 {
                     StartCoroutine(Explosion());
@@ -63,17 +66,18 @@ public class InteractableBarrel : WorldInteractable
         {
             if(Mathf.Abs(area.x) < 1.1 && Mathf.Abs(area.y) < 1.6)
             {
-                Destroy(this.gameObject);
                 gBarrel.grabbed = true;
                 if (explosive)
                 {
                     gBarrel.explosive = true;
+                    projectileBarrel.explosive = true;
                 }
                 else
                 {
                     gBarrel.explosive = false;
+                    projectileBarrel.explosive = false;
                 }
-                
+                Destroy(this.gameObject);
             }
             
         }

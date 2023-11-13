@@ -131,6 +131,7 @@ MonoBehaviour:
   m_movementScale: 0
   colorChanger: {fileID: 192284043802204687}
   originalColor: {r: 0.3882353, g: 0.13725491, b: 0.08235294, a: 1}
+  interactableBarrel: {fileID: 318973894822950720, guid: 2f1f6fb5720562d4ab6b8ad834e151e5, type: 3}
   grabbed: 0
   explosive: 0
 --- !u!114 &192284043802204687
