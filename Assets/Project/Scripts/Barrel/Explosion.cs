@@ -5,11 +5,12 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     [SerializeField]
-    protected float damage = 10;
+    protected float damage = 100f;
 
-    protected void OnCollisionEnter2D(Collision2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
-        OnCollision(collision);
+        //OnCollision(collision);
+        Debug.Log("Colision with explosion detected");
         Character hm = collision.transform.GetComponent<Character>();
         if (hm != null)
         {
@@ -28,15 +29,15 @@ public class Explosion : MonoBehaviour
             Debug.Log("Barrel");
         }
     }
-    public virtual void OnCollision(Collision2D collision)
-    {
-        Character hm = collision.transform.GetComponent<Character>();
-        //HealthManagement hm = collision.transform.GetComponent<HealthManagement>();
-        if (hm != null)
-        {
-            hm.LoseHP(damage);
-        }
-    }
+    //public virtual void OnCollision(Collision2D collision)
+    //{
+    //    Character hm = collision.transform.GetComponent<Character>();
+    //    //HealthManagement hm = collision.transform.GetComponent<HealthManagement>();
+    //    if (hm != null)
+    //    {
+    //        hm.LoseHP(damage);
+    //    }
+    //}
     public void ChangeDamage(float amount)
     {
         damage = amount;
