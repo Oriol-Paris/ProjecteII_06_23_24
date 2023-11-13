@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a549f9f8a83931c4887b1c36d3944878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 100
-  m_currentHealth: 100
+  m_maxHealth: 50
+  m_currentHealth: 50
   explosive: 0
   explosion: {fileID: 3773607828734962923, guid: 0ad4c2a26df59d64ea2d6318e5396aed, type: 3}
   m_rb: {fileID: 5777386239992965273}

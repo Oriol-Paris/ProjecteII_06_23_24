@@ -56,6 +56,12 @@ public class ProjectileBarrel : Projectile
                 Destroy(this.gameObject, 10);
                 rb.transform.position = new Vector2(1000f, 1000f);
             }
+            if (collision.gameObject.tag == "Barrel")
+            {
+                Debug.Log("Barrel");
+                Destroy(this.gameObject, 10);
+                rb.transform.position = new Vector2(1000f, 1000f);
+            }
             if (collision.gameObject.tag == "Enemy")
             {
                 Debug.Log("Enemy");
