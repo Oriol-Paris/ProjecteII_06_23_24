@@ -19,53 +19,45 @@ public class PlayerAttack : Attack
     [SerializeField]
     private GrabbedBarrel gBarrel;
     private float timeDuration = 0.4f;
-    private float timer;
+    private float timer = 0.0f;
     private bool shoot = true;
     private int numShots = 1;
     [SerializeField]
     public bool bulletBig = false;
-    //private Transform playerTransform;
 
-    //public PlayerAttack(Rigidbody2D bullet, Transform playerTransform)
-    //{
-    //    this.bullet = bullet;
-    //    this.playerTransform = playerTransform;
-    //}
+    [SerializeField]
+    protected Camera cam;
+
     public override void AttackAction()
     {
-        if (timer > 0)
-            timer -= Time.deltaTime;
-        else
+        timer -= Time.deltaTime;
+        shoot = timer < 0f;
+
+        if (Input.GetMouseButton(0))
         {
-            timer = timeDuration;
-            shoot = true;
-        }
-        if (Input.GetMouseButton(0) || Gamepad.current.rightTrigger.IsActuated())
-        {
-            if (gBarrel.grabbed == false)
+            if (gBarrel.grabbed is true)
             {
+                //Barrel code
+                Instantiate(barrel, transform.position, grabBarrel.transform.rotation);
+                timer = timeDuration;
+            }
+            else
+            {
+                Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
                 if (!player.godMode)
                 {
                     if (shoot)
                     {
                         timer -= Time.deltaTime;
-                        Instantiate(bulletBig ? bigBullet : bullet, transform.position, transform.rotation);
+                        Instantiate(bulletBig ? bigBullet : bullet, player.m_rb.position, Quaternion.Euler(0f, 0f, player.m_rb.rotation));
                         shoot = false;
                         timer = timeDuration;
                     }
                 }
                 else
                 {
-                    Instantiate(bulletBig ? bigBullet : bullet, transform.position, transform.rotation);
+                    Instantiate(bulletBig ? bigBullet : bullet, player.m_rb.position, Quaternion.Euler(0f, 0f, player.m_rb.rotation));
                 }
-
-            }
-            else
-            {
-                Instantiate(barrel, transform.position, grabBarrel.transform.rotation);
-                shoot = false;
-                timer = timeDuration;
-                //gBarrel.grabbed = false;
             }
             gBarrel.grabbed = false;
         }

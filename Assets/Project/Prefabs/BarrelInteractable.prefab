@@ -106,8 +106,8 @@ MonoBehaviour:
   explosive: 0
   explosion: {fileID: 3773607828734962923, guid: 0ad4c2a26df59d64ea2d6318e5396aed, type: 3}
   m_rb: {fileID: 5777386239992965273}
-  grabbedBarrel: {fileID: 5777386239992965273, guid: e847359045716bd488c9a7cab7da6351, type: 3}
-  player: {fileID: 3491572017750475589, guid: 17cbbc04021ed4248b4835e223d11d7e, type: 3}
+  grabbedBarrel: {fileID: 0}
+  player: {fileID: 5631885637154668900, guid: 7a65d5d62cb9169419b09e695cc06bac, type: 3}
   gBarrel: {fileID: -8434661935196266759, guid: e847359045716bd488c9a7cab7da6351, type: 3}
   projectileBarrel: {fileID: 2917902918235046937, guid: 26571e329ec00724ab91c62c1ad39a06, type: 3}
   cooldown: 0.25

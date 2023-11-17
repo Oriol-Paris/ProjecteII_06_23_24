@@ -126,9 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1f06930af6dba4f9b470bc9459f312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  enemy: {fileID: 0}
-  speed: 30
+  physics: {fileID: 0}
+  <damage>k__BackingField: 10
+  <lifetime>k__BackingField: 5
+  <shootForce>k__BackingField: 10
 --- !u!58 &2861784679921953617
 CircleCollider2D:
   m_ObjectHideFlags: 0

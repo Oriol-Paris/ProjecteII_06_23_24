@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ffc716276a086c41ab7dbd40cd467a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rb: {fileID: 6636825462442895756}
-  m_movementScale: 70
+  <m_rb>k__BackingField: {fileID: 6636825462442895756}
+  <m_movementScale>k__BackingField: 1
   objective: {fileID: 0}
   force: 20
 --- !u!114 &1443082706734327707

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyBullet : Projectile
 {
-    public override void BulletMovement()
+    protected override void OnCollision(Collision2D collision)
     {
-        
+        Debug.Log(collision.gameObject.tag);
+        collision.transform.GetComponent<Character>()?.LoseHP(damage);
+        Destroy(this.gameObject);
     }
-
 }
