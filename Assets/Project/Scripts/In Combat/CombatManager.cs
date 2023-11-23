@@ -15,14 +15,18 @@ public class CombatManager : MonoBehaviour
 
     private void OrderCharacters()
     {
-        characters = characters.OrderByDescending(character => character.agility).ToList();
+        characters = characters.OrderBy(character => character.agility).ToList();
     }
 
     private void Update()
     {
         Debug.Log("Turn Change");
         characters[0].TurnChanger();
-        characters[0].TurnAction();
+
+        while (characters[0].activeTurn)
+        {
+            characters[0].TurnAction();
+        }
 
         for (int i = 1; i < characters.Count(); ++i)
         {

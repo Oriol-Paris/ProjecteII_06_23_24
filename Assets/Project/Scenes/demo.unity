@@ -843,7 +843,7 @@ MonoBehaviour:
   agility: 30
   accuracy: 80
   isTargeted: 0
-  sr: {fileID: 0}
+  sr: {fileID: 392239290}
 --- !u!212 &392239290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1259,6 +1259,7 @@ GameObject:
   - component: {fileID: 914802647}
   - component: {fileID: 914802649}
   - component: {fileID: 914802648}
+  - component: {fileID: 914802650}
   m_Layer: 0
   m_Name: Enemy (top)
   m_TagString: Untagged
@@ -1299,7 +1300,9 @@ MonoBehaviour:
   attack: 20
   agility: 20
   accuracy: 85
-  allies: []
+  allies:
+  - {fileID: 1370140002}
+  - {fileID: 392239289}
 --- !u!212 &914802649
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1352,6 +1355,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &914802650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914802646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+    m_PressedColor: {r: 0.9811321, g: 0.19900322, b: 0.19900322, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 914802648}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: SetAsTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &973925163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1675,7 @@ GameObject:
   - component: {fileID: 1189247234}
   - component: {fileID: 1189247236}
   - component: {fileID: 1189247235}
+  - component: {fileID: 1189247237}
   m_Layer: 0
   m_Name: Enemy (middle)
   m_TagString: Untagged
@@ -1656,7 +1716,9 @@ MonoBehaviour:
   attack: 20
   agility: 20
   accuracy: 85
-  allies: []
+  allies:
+  - {fileID: 1370140002}
+  - {fileID: 392239289}
 --- !u!212 &1189247236
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1709,6 +1771,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1189247237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189247233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+    m_PressedColor: {r: 0.9811321, g: 0.19900322, b: 0.19900322, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1189247235}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: SetAsTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1225120699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +2089,7 @@ MonoBehaviour:
   agility: 15
   accuracy: 95
   isTargeted: 0
-  sr: {fileID: 0}
+  sr: {fileID: 1370140003}
 --- !u!212 &1370140003
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2263,6 +2381,7 @@ GameObject:
   - component: {fileID: 1556038738}
   - component: {fileID: 1556038740}
   - component: {fileID: 1556038739}
+  - component: {fileID: 1556038741}
   m_Layer: 0
   m_Name: Enemy (bottom)
   m_TagString: Untagged
@@ -2303,7 +2422,9 @@ MonoBehaviour:
   attack: 20
   agility: 20
   accuracy: 85
-  allies: []
+  allies:
+  - {fileID: 1370140002}
+  - {fileID: 392239289}
 --- !u!212 &1556038740
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2356,6 +2477,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1556038741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556038737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+    m_PressedColor: {r: 0.9811321, g: 0.19900322, b: 0.19900322, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1556038739}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: SetAsTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1566462970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,7 +2665,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5c1a448f941e646917aceff22a916f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characters: []
+  characters:
+  - {fileID: 1370140002}
+  - {fileID: 392239289}
+  - {fileID: 1556038739}
+  - {fileID: 1189247235}
+  - {fileID: 914802648}
 --- !u!4 &1606573401
 Transform:
   m_ObjectHideFlags: 0
