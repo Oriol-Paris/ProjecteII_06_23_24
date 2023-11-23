@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private List<Character> characters;
+
+    private void Start()
     {
-        
+        OrderCharacters();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OrderCharacters()
     {
-        
+        characters = characters.OrderByDescending(character => character.agility).ToList();
+    }
+
+    private void Update()
+    {
+        characters[0].TurnChanger();
+        characters[0].TurnAction();
+
+        for (int i = 1; i < characters.Count(); ++i)
+        {
+            characters[i].agility -= characters[0].agility;
+        }
+
+        OrderCharacters();
     }
 }

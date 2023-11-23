@@ -1,19 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
     [SerializeField]
-    protected int health = 100;
-    [SerializeField]
-    protected int attack = 101;
-    [SerializeField]
-    protected int agility = 102;
-
-    // Update is called once per frame
-    void Update()
+    private List<Ally> allies;
+    public override void TurnAction()
     {
-        
+        Damage(SetTarget(), 1);
+    }
+
+    public Ally SetTarget()
+    {
+        allies = allies.OrderByDescending(ally => ally.health).ToList();
+        allies[0].isTargeted = true;
+        return allies[0];
+    }
+
+    private void SetAsTarget()
+    {
+        foreach(Ally ally in allies)
+        {
+            if (ally.activeTurn)
+            {
+                ally.SetTarget(this);
+            }
+        }
     }
 }
