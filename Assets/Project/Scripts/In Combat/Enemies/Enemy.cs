@@ -20,7 +20,7 @@ public class Enemy : Character
         return allies[0];
     }
 
-    private void SetAsTarget()
+    private void SetAsTarget() //Se llama desde la UI
     {
         foreach(Ally ally in allies)
         {
