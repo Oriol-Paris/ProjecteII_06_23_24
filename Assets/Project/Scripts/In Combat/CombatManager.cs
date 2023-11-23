@@ -20,6 +20,7 @@ public class CombatManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Turn Change");
         characters[0].TurnChanger();
         characters[0].TurnAction();
 

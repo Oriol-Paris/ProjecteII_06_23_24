@@ -11,7 +11,7 @@ public class Ally : Character
     public override void TurnAction()
     {
         sr.color = new Color(0, 255, 255, 1);
-        while (!enemyTargeted) {}
+        while (!enemyTargeted) { Debug.Log("Loop"); }
         Damage(en, 1f);
         sr.color = Color.white;
     }
