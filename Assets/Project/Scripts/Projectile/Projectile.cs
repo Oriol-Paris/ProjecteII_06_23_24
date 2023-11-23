@@ -5,24 +5,27 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
     [SerializeField]
-    protected float damage = 10;
-    public abstract void BulletMovement();
+    protected Rigidbody2D physics;
+    [field: SerializeField]
+    public float damage { get; protected set; } = 10;
+    [field: SerializeField]
+    public float lifetime { get; protected set; } = 5.0f;
+    [field: SerializeField]
+    public float shootForce { get; protected set; } = 1000.0f;
+    public virtual void BulletMovement() { }
+    protected abstract void OnCollision(Collision2D collision);
+    protected virtual void Start()
+    {
+        physics = this.GetComponent<Rigidbody2D>();
+        Destroy(this.gameObject, lifetime);
+        physics.AddForce(transform.right * shootForce, ForceMode2D.Impulse);
+    }
     protected virtual void FixedUpdate()
     {
         BulletMovement();
     }
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         OnCollision(collision);
-    }
-    public virtual void OnCollision(Collision2D collision)
-    {
-        Character hm = collision.transform.GetComponent<Character>();
-        //HealthManagement hm = collision.transform.GetComponent<HealthManagement>();
-        if (hm != null)
-        {
-            hm.LoseHP(damage);
-        }
-        Destroy(this.gameObject, 10);
     }
 }

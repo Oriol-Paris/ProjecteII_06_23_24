@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4273327789029340957}
   - component: {fileID: 4310706764303513231}
   m_Layer: 7
-  m_Name: Sogetto Bluey
+  m_Name: Sogetto Blu 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,8 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ffc716276a086c41ab7dbd40cd467a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rb: {fileID: 3108984989868711723}
-  m_movementScale: 100
+  <m_rb>k__BackingField: {fileID: 3108984989868711723}
+  <m_movementScale>k__BackingField: 1
   objective: {fileID: 0}
   force: 50
 --- !u!114 &4273327789029340957

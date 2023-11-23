@@ -4,16 +4,20 @@ using UnityEngine;
 
 public abstract class Movement : MonoBehaviour
 {
-    [SerializeField]
-    protected Rigidbody2D m_rb;
+    [field: SerializeField]
+    public Rigidbody2D m_rb { get; protected set; }
     protected Vector2 movementDir;
-    [SerializeField]
-    protected float m_movementScale;
-    protected abstract void Update();
-    protected abstract void FixedUpdate();
+    [field: SerializeField]
+    public float m_movementScale { get; protected set; } = 1.0f;
+    protected virtual void Update()
+    {
+        GetMovementAxis();
+    }
+    protected virtual void FixedUpdate()
+    {
+        Move();
+    }
     public abstract void GetMovementAxis();
-    
-
     public abstract void Move();
     
 }

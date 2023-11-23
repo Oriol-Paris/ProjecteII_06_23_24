@@ -30,65 +30,21 @@ public class ProjectileBarrel : Projectile
         Destroy(this.gameObject, 20);
         
     }
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollision(Collision2D collision)
     {
-        Character hm = collision.transform.GetComponent<Character>();
-        if (hm != null)
-        {
-            hm.LoseHP(damage);
-        }
+        Debug.Log(collision.gameObject.tag);
 
         if (explosive)
-        {
-            if (!hasExploded)
-            {
-                StartCoroutine(Explosion());
-                hasExploded = true;
-            }
-            Destroy(this.gameObject, 10);
-            rb.transform.position = new Vector2(1000f, 1000f);
-        }
+            Instantiate(explosion, transform.position, transform.rotation);
         else
-        {
-            if (collision.gameObject.tag == "Wall")
-            {
-                Debug.Log("Wall");
-                Destroy(this.gameObject, 10);
-                rb.transform.position = new Vector2(1000f, 1000f);
-            }
-            if (collision.gameObject.tag == "Barrel")
-            {
-                Debug.Log("Barrel");
-                Destroy(this.gameObject, 10);
-                rb.transform.position = new Vector2(1000f, 1000f);
-            }
-            if (collision.gameObject.tag == "Enemy")
-            {
-                Debug.Log("Enemy");
-            }
-        }
-        
+            collision.transform.GetComponent<Character>()?.LoseHP(damage);
+
+        Destroy(this.gameObject);
     }
-    public override void OnCollision(Collision2D collision)
-    {
-        Character hm = collision.transform.GetComponent<Character>();
-        //HealthManagement hm = collision.transform.GetComponent<HealthManagement>();
-        if (hm != null)
-        {
-            hm.LoseHP(damage);
-        }
-        Destroy(this.gameObject, 10);
-    }
+
     public void ChangeDamage(float amount)
     {
         damage = amount;
-    }
-
-    IEnumerator Explosion()
-    {
-        GameObject explosionInstance = Instantiate(explosion, transform.position, transform.rotation);
-        yield return new WaitForSeconds(cooldown);
-        Destroy(explosionInstance);
     }
 }
     
