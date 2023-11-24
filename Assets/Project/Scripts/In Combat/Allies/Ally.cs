@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class Ally : Character
 {
-    public bool isTargeted = false;
     private Enemy en = null;
     private bool enemyTargeted = false;
-    public SpriteRenderer sr;
 
     public void SetTarget(Enemy enemy)
     {

@@ -16,6 +16,8 @@ public abstract class Character : MonoBehaviour
     protected int accuracy;
     protected bool activeTurn;
 
+    public SpriteRenderer sr;
+
     protected virtual void Damage(Character other, float atkMult)
     {
         if (Random.Range(1, 100) < accuracy)
@@ -33,7 +35,7 @@ public abstract class Character : MonoBehaviour
 
         if (other.health < 0 )
         {
-            Destroy(other);
+            Destroy(other.gameObject);
         }
     }
 

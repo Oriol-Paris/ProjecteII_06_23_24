@@ -11,9 +11,10 @@ public class Enemy : Character
 
     public Ally SetTarget()
     {
-        allies = allies.OrderByDescending(ally => ally.health).ToList();
-        allies[0].isTargeted = true;
-        return allies[0];
+        allies = allies.OrderBy(ally => ally.health).ToList();
+        if (allies[0].health > 0)
+            return allies[0];
+        return null;
     }
 
     public void SetAsTarget()
@@ -29,7 +30,7 @@ public class Enemy : Character
 
     public override void OnTurnStart()
     {
-        
+        sr.color = new Color(255, 0, 0, 1);
     }
 
     public override void OnTurnEnd()
@@ -39,11 +40,13 @@ public class Enemy : Character
 
     public override void OnTurnUpdate()
     {
-        if (activeTurn)
+        Ally a = SetTarget();
+        if (a != null)
         {
             Damage(SetTarget(), 1f);
-            OnTurnEnd();
         }
+        Debug.Log("End Turn");
+        OnTurnEnd();
     }
 
     public override void ForceFinishTurn()
