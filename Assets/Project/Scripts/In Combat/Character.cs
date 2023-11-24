@@ -14,7 +14,7 @@ public abstract class Character : MonoBehaviour
     public int agility;
     [SerializeField]
     protected int accuracy;
-    public bool activeTurn {  get; protected set; }
+    protected bool activeTurn;
 
     protected virtual void Damage(Character other, float atkMult)
     {
@@ -41,6 +41,9 @@ public abstract class Character : MonoBehaviour
     {
         activeTurn = !activeTurn;
     }
-
-    public abstract void TurnAction();
+    public abstract void OnTurnStart();
+    public abstract void OnTurnEnd();
+    public abstract void OnTurnUpdate();
+    public abstract void ForceFinishTurn();
+    public abstract bool IsFinished();
 }

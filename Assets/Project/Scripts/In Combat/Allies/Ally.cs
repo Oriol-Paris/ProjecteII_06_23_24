@@ -9,19 +9,39 @@ public class Ally : Character
     private Enemy en = null;
     private bool enemyTargeted = false;
     public SpriteRenderer sr;
-    public override async void TurnAction()
-    {
-        sr.color = new Color(0, 255, 255, 1);
-        //await Task.Equals(en, !null); //No funciona esto
-        Damage(en, 1f);
-        sr.color = Color.white;
-        activeTurn = false;
-        
-    }
 
     public void SetTarget(Enemy enemy)
     {
         en = enemy;
         enemyTargeted = true;
+    }
+
+    public override void OnTurnStart()
+    {
+        sr.color = new Color(0, 255, 255, 1);
+    }
+
+    public override void OnTurnEnd()
+    {
+        sr.color = Color.white;
+        activeTurn = false;
+    }
+
+    public override void OnTurnUpdate()
+    {
+        if (enemyTargeted)
+        {
+            Damage(en, 1f);
+        }
+    }
+
+    public override void ForceFinishTurn()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool IsFinished()
+    {
+        return !activeTurn;
     }
 }

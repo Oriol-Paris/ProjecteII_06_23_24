@@ -8,10 +8,6 @@ public class Enemy : Character
 {
     [SerializeField]
     private List<Ally> allies;
-    public override void TurnAction()
-    {
-        Damage(SetTarget(), 1);
-    }
 
     public Ally SetTarget()
     {
@@ -24,10 +20,35 @@ public class Enemy : Character
     {
         foreach(Ally ally in allies)
         {
-            if (ally.activeTurn)
+            if (!ally.IsFinished())
             {
                 ally.SetTarget(this);
             }
         }
+    }
+
+    public override void OnTurnStart()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnTurnEnd()
+    {
+        activeTurn = false;
+    }
+
+    public override void OnTurnUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void ForceFinishTurn()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool IsFinished()
+    {
+        return !activeTurn;
     }
 }
