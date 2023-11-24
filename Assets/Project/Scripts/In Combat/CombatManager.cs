@@ -10,6 +10,7 @@ public class CombatManager : MonoBehaviour
     private List<Ally> allies;
     [SerializeField]
     private List<Enemy> enemies;
+    [SerializeField]
     private List<Character> characters = new List<Character>();
 
 
@@ -17,12 +18,12 @@ public class CombatManager : MonoBehaviour
     {
         foreach (Ally ally in allies)
         {
-            characters.Append(ally);
+            characters.Add(ally);
         }
 
         foreach (Enemy enemy in enemies)
         {
-            characters.Append(enemy);
+            characters.Add(enemy);
         }
 
         OrderCharacters();
@@ -79,7 +80,7 @@ public class CombatManager : MonoBehaviour
 
     private void RemoveDeadCharacters()
     {
-        for (int i = characters.Count; i > 0; --i)
+        for (int i = characters.Count - 1; i > 0; --i)
         {
             if (characters[i] == null)
             {
@@ -87,7 +88,7 @@ public class CombatManager : MonoBehaviour
             }
         }
 
-        for (int i = allies.Count; i > 0; --i)
+        for (int i = allies.Count - 1; i > 0; --i)
         {
             if (allies[i] == null)
             {
@@ -95,7 +96,7 @@ public class CombatManager : MonoBehaviour
             }
         }
 
-        for (int i = enemies.Count; i > 0; --i)
+        for (int i = enemies.Count - 1; i > 0; --i)
         {
             if (enemies[i] == null)
             {

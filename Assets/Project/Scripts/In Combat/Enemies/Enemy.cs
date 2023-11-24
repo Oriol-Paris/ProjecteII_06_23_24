@@ -29,7 +29,7 @@ public class Enemy : Character
 
     public override void OnTurnStart()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void OnTurnEnd()
@@ -39,12 +39,16 @@ public class Enemy : Character
 
     public override void OnTurnUpdate()
     {
-        throw new System.NotImplementedException();
+        if (activeTurn)
+        {
+            Damage(SetTarget(), 1f);
+            OnTurnEnd();
+        }
     }
 
     public override void ForceFinishTurn()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override bool IsFinished()

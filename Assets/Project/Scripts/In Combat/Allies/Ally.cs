@@ -32,6 +32,8 @@ public class Ally : Character
         if (enemyTargeted)
         {
             Damage(en, 1f);
+            enemyTargeted = false;
+            OnTurnEnd();
         }
     }
 
