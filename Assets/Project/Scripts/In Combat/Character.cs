@@ -11,8 +11,6 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     protected int attack;
     [SerializeField]
-    public int agility;
-    [SerializeField]
     protected int accuracy;
     protected bool activeTurn;
 

@@ -26,7 +26,6 @@ public class CombatManager : MonoBehaviour
             characters.Add(enemy);
         }
 
-        OrderCharacters();
         Debug.Log("Turn Change");
         characters[0].TurnChanger();
         characters[0].OnTurnStart();
@@ -46,11 +45,6 @@ public class CombatManager : MonoBehaviour
                 EndCombat();
 
             characters[0].OnTurnEnd();
-
-            for (int i = 1; i < characters.Count(); ++i)
-            {
-                characters[i].agility -= characters[0].agility;
-            }
 
             OrderCharacters();
 
@@ -107,6 +101,8 @@ public class CombatManager : MonoBehaviour
 
     private void OrderCharacters()
     {
-        characters = characters.OrderBy(character => character.agility).ToList();
+        Character c = characters[0];
+        characters.RemoveAt(0);
+        characters.Add(c);
     }
 }
