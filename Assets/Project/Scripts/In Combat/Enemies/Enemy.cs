@@ -43,7 +43,7 @@ public class Enemy : Character
         Ally a = SetTarget();
         if (a != null)
         {
-            Damage(SetTarget(), 1f);
+            PhysiqueDamage(SetTarget());
         }
         Debug.Log("End Turn");
         OnTurnEnd();

@@ -29,7 +29,7 @@ public class Ally : Character
     {
         if (enemyTargeted)
         {
-            Damage(en, 1f);
+            PhysiqueDamage(en);
             enemyTargeted = false;
             OnTurnEnd();
         }
