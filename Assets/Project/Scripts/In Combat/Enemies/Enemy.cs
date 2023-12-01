@@ -13,8 +13,8 @@ public class Enemy : Character
 
     public Ally SetTarget()
     {
-        allies = allies.OrderBy(ally => ally.health).ToList();
-        if (!(allies[0].health > 0))
+        allies = allies.OrderBy(ally => ally.GetHealth()).ToList();
+        if (!(allies[0].GetHealth() > 0))
             return allies[1];
         return allies[0];
     }

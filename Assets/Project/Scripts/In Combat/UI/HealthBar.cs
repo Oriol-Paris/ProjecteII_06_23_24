@@ -12,10 +12,10 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        slider.maxValue = character.maxHealth;
+        slider.maxValue = character.GetMaxHealth();
     }
     void Update()
     {
-        slider.value = character.health;
+        slider.value = character.GetHealth();
     }
 }

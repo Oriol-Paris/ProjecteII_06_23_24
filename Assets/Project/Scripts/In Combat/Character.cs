@@ -19,15 +19,15 @@ public abstract class Character : MonoBehaviour
     //public int agility { get; protected set; }
     [field: SerializeField]
     public int luck { get; protected set; }
-    public float health {  get; protected set; }
-    public float maxHealth { get; protected set; }
+    private float health;
+    private float maxHealth;
     [SerializeField]
     protected int accuracy;
     protected bool activeTurn;
 
     public SpriteRenderer sr;
 
-    private void Start()
+    private void Awake()
     {
         maxHealth = 5.0f * vitality;
         health = maxHealth;
@@ -89,4 +89,7 @@ public abstract class Character : MonoBehaviour
     public abstract void OnTurnUpdate();
     public abstract void ForceFinishTurn();
     public abstract bool IsFinished();
+
+    public float GetHealth() { return health; }
+    public float GetMaxHealth() { return maxHealth; }
 }

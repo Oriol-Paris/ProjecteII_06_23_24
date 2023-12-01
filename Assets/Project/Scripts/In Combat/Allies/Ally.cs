@@ -54,7 +54,9 @@ public class Ally : Character
             case "flee":
                 break;
 
-            default: break;
+            default:
+                OnTurnUpdate();
+                break;
 
         }
 
