@@ -9,7 +9,7 @@ public class Enemy : Character
     [SerializeField]
     private List<Ally> allies;
 
-    int defaultAttackPower = 7;
+    int defaultAttackPower = 10;
 
     public Ally SetTarget()
     {
