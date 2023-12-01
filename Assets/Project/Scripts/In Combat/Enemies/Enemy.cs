@@ -9,6 +9,8 @@ public class Enemy : Character
     [SerializeField]
     private List<Ally> allies;
 
+    int defaultAttackPower = 7;
+
     public Ally SetTarget()
     {
         allies = allies.OrderBy(ally => ally.health).ToList();
@@ -43,7 +45,7 @@ public class Enemy : Character
         Ally a = SetTarget();
         if (a != null)
         {
-            PhysiqueDamage(SetTarget());
+            PhysiqueDamage(SetTarget(), defaultAttackPower);
         }
         Debug.Log("End Turn");
         OnTurnEnd();

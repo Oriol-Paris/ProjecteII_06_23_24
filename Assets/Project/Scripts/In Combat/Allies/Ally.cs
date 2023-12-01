@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 public class Ally : Character
 {
     private Enemy en = null;
     private bool enemyTargeted = false;
+    [SerializeField]
+    private UICombatButtonManager buttonManager;
+
+    private int defaultAttackPower = 15;
 
     public void SetTarget(Enemy enemy)
     {
@@ -27,12 +33,32 @@ public class Ally : Character
 
     public override void OnTurnUpdate()
     {
-        if (enemyTargeted)
+        switch(buttonManager.buttonPressed)
         {
-            PhysiqueDamage(en);
-            enemyTargeted = false;
-            OnTurnEnd();
+            case "attack":
+                if (enemyTargeted)
+                {
+                    PhysiqueDamage(en, defaultAttackPower);
+                    enemyTargeted = false;
+                    OnTurnEnd();
+                }
+                break;
+            case "defense":
+
+                break;
+            case "skill":
+
+                break;
+            case "bag":
+                break;
+            case "flee":
+                break;
+
+            default: break;
+
         }
+
+       
     }
 
     public override void ForceFinishTurn()
