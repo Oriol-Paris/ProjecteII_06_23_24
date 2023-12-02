@@ -48,7 +48,7 @@ public class Ally : Character
         if(attackPressed)
         {
             attackPressed = false;
-            Debug.Log("AttackCalled");
+            Debug.Log("Attack Called");
             if(enemyTargeted)
             {
                 PhysiqueDamage(en, defaultAttackPower);
@@ -59,6 +59,9 @@ public class Ally : Character
         if(defensePressed)
         {
             defensePressed = false;
+            Debug.Log("Defense Called");
+            DefenseUp(50);
+            OnTurnEnd();
         }
         if(skillPressed)
         {

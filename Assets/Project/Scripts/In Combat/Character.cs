@@ -32,7 +32,7 @@ public abstract class Character : MonoBehaviour
 
     private float defenseIncrease = 1.0f;
 
-    //remember that increase is not a percentage, is a float
+    //remember that increase is a percentage->%, it will reduce directly the atkVal by the percentage
     protected void DefenseUp(int increase)
     {
         defenseIncrease = increase;
@@ -55,12 +55,14 @@ public abstract class Character : MonoBehaviour
             if (Random.Range(1, 100) < luck * 1.25)
                 atkVal = atkVal * 1.5f;
 
-            
-
-
-
+            if(defenseIncrease != 100)
+            {
+                atkVal = (defenseIncrease * atkVal / 100);
+                defenseIncrease = 100;
+            }
             other.health -= atkVal;
             string atkMessage = "Attack Connected! -> " + atkVal.ToString() + " damage";
+
             Debug.Log(atkMessage);
         }
         else
