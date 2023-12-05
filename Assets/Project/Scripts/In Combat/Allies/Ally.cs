@@ -11,6 +11,9 @@ public class Ally : Character
 
     private int defaultAttackPower = 10;
 
+
+    List<Object> bagContent;
+
     [SerializeField]
     public Button attackButton, defenseButton, skillButton, bagButton, fleeButton;
 
