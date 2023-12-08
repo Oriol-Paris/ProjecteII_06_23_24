@@ -11,8 +11,9 @@ public class Ally : Character
 
     private int defaultAttackPower = 10;
 
+    [field: SerializeField]
+    public Inventory alliesInventory { get; protected set; }
 
-    List<Object> bagContent;
 
     [SerializeField]
     public Button attackButton, defenseButton, skillButton, bagButton, fleeButton;
@@ -26,6 +27,8 @@ public class Ally : Character
         skillButton.onClick.AddListener(() => skillPressed = true);
         bagButton.onClick.AddListener(() => bagPressed = true);
         fleeButton.onClick.AddListener(() => fleePressed = true);
+
+        
     }
 
     public void SetTarget(Enemy enemy)
@@ -73,6 +76,7 @@ public class Ally : Character
         if(bagPressed)
         {
             bagPressed = false;
+
         }
         if(fleePressed)
         {

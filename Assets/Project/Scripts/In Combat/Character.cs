@@ -6,23 +6,25 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     [field: SerializeField]
-    public int level { get; protected set; }
+    public int level { get; set; }
     [field: SerializeField]
-    public int vitality { get; protected set; }
+    public int vitality { get; set; }
     [field: SerializeField]
-    public int strength { get; protected set; }
+    public int strength { get; set; }
     [field: SerializeField]
-    public int resistance { get; protected set; }
+    public int resistance { get; set; }
     [field: SerializeField]
-    public int intelligence { get; protected set; }
+    public int intelligence { get; set; }
     //[field: SerializeField]
     //public int agility { get; protected set; }
     [field: SerializeField]
-    public int luck { get; protected set; }
+    public int luck { get; set; }
     private float health;
     private float maxHealth;
     private float mana;
     private float maxMana;
+
+    protected bool isInmortal = false;
 
     [SerializeField]
     protected int accuracy;
@@ -31,6 +33,24 @@ public abstract class Character : MonoBehaviour
     public SpriteRenderer sr;
 
     private float defenseIncrease = 1.0f;
+
+    //protected void RecoverHp(float hp){health += hp;}
+    //protected void RecoverMana(float m){mana += mana;}
+    //protected void IncreaseResistance(int resistanceUp){resistance += resistanceUp;}
+    //protected void IncreaseStrenght(int strengthUp){strength += strengthUp;}
+    //protected void IncreaseIntelligence(int intelligenceUp){intelligence += intelligenceUp;}
+    //public void IncreaseVitality(int vitalityUp){vitality += vitalityUp;}
+    //public void IncreaseLuck(int luckUp){luck += luckUp;}
+    //public void DecreasResistance(int resistanceDown){resistance -= resistanceDown;}
+    //public void DecreaseStrenght(int strengthDown){strength -= strengthDown;}
+    //public void DecreaseIntelligence(int intelligenceDown){intelligence -= intelligenceDown;}
+    //public void DecreaseVitality(int vitalityDown){vitality -= vitalityDown;}
+    //public void DecreaseLuck(int luckDown){luck -= luckDown;}
+    //public void InmortalityActivated(){isInmortal = true;}
+    //public void InmortalityDesactivated(){isInmortal = false;}
+
+    protected bool GetIsInmortal() { return isInmortal;}
+
 
     //remember that increase is a percentage->%, it will reduce directly the atkVal by the percentage
     protected void DefenseUp(int increase)
@@ -64,6 +84,13 @@ public abstract class Character : MonoBehaviour
             string atkMessage = "Attack Connected! -> " + atkVal.ToString() + " damage";
 
             Debug.Log(atkMessage);
+
+            if (other.GetIsInmortal())
+            {
+                if (other.health <= 0)
+                    other.health = 1;
+                Debug.Log("Enemy is Inmortal");
+            }
         }
         else
         {
@@ -107,5 +134,12 @@ public abstract class Character : MonoBehaviour
     public abstract bool IsFinished();
 
     public float GetHealth() { return health; }
+
+    public void SetHealth(float newHealth) { health = newHealth; }
     public float GetMaxHealth() { return maxHealth; }
+
+    public float GetMana() {  return mana; }
+
+    public void SetMana(float newMana) {  mana = newMana; }
+
 }
