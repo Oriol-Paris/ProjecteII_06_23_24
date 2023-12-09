@@ -17,7 +17,13 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Canvas inventoryCanvas;
 
-   public void AddObject (Object obj)
+
+    private void Awake()
+    {
+        inventoryCanvas.gameObject.SetActive(false);
+    }
+
+    public void AddObject (Object obj)
     {
         bagContent.Add(obj);
 
@@ -48,17 +54,10 @@ public class Inventory : MonoBehaviour
 
     public void OpenInventory()
     {
-        inventoryCanvas.enabled = true;
+        inventoryCanvas.gameObject.SetActive(true);
     }
-    private void CloseInventory()
+    public void CloseInventory()
     {
-        inventoryCanvas.enabled = false;
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        inventoryCanvas.gameObject.SetActive(false);
     }
 }
