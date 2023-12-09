@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
 
     Potion potion = new Potion();
 
-    private GameObject buttonPrefab;
+    private Button buttonPrefab;
 
-    private Transform buttonContainer;
+    private RectTransform buttonContainer;
 
     public List<Object> bagContent = new List<Object>();
 
@@ -20,22 +21,40 @@ public class Inventory : MonoBehaviour
     {
         bagContent.Add(obj);
 
-        GameObject buttonObject = Instantiate(buttonPrefab, buttonContainer);
-        
+        Button buttonObject = Instantiate(buttonPrefab, buttonContainer);
+        Button button = buttonObject.GetComponent<Button>();
+
+        button.onClick.AddListener(() =>
+        {
+            //obj.Use();
+            Destroyer(obj);
+        });
+
+    }
+
+    private void Destroyer(Object obj)
+    {
+        bagContent.Remove(obj);
+        Destroy(obj.gameObject);
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        bagContent.Add(potion);
-        bagContent.Add(potion);
+        AddObject(potion);
+        AddObject(potion);
     }
 
-    void OpenInventory()
+    public void OpenInventory()
     {
-
+        inventoryCanvas.enabled = true;
     }
+    private void CloseInventory()
+    {
+        inventoryCanvas.enabled = false;
+    }
+
 
     // Update is called once per frame
     void Update()
