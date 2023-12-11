@@ -9,11 +9,11 @@ public class Attack : MonoBehaviour
     [SerializeField]
     AtkRange range;
     [SerializeField]
-    float attackMultiplier;
+    float attackPower;
 
-    public Attack(float atkmult, AtkRange rng)
+    public Attack(float atkPow, AtkRange rng)
     {
-        attackMultiplier = atkmult;
+        attackPower = atkPow;
         range = rng;
     }
 
@@ -24,7 +24,7 @@ public class Attack : MonoBehaviour
 
     public float GetAtkMult()
     { 
-        return attackMultiplier; 
+        return attackPower; 
     }
 
 }
