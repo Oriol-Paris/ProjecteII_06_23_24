@@ -18,8 +18,11 @@ enum Class
 public class Object : MonoBehaviour
 {
 
-    [field: SerializeField]
-    public int powerAmount { get; protected set; }
+    [SerializeField]
+    public int powerAmount;
+
+    [SerializeField]
+    protected string name;
 
     [SerializeField]
     internal List<Class> classes = new List<Class>();
@@ -55,6 +58,9 @@ public class Object : MonoBehaviour
 
             }
         }
+
+        Debug.Log(name);
+
     }
 
     void Start()
@@ -67,6 +73,8 @@ public class Object : MonoBehaviour
     {
         
     }
+
+    public string GetName() { return name; }
 
     
 }
