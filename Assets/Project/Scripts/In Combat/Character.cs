@@ -34,6 +34,8 @@ public abstract class Character : MonoBehaviour
 
     private float defenseIncrease = 1.0f;
 
+    public bool skillUsed = false;
+
     //protected void RecoverHp(float hp){health += hp;}
     //protected void RecoverMana(float m){mana += mana;}
     //protected void IncreaseResistance(int resistanceUp){resistance += resistanceUp;}

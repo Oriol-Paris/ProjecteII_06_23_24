@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class SkillMenu : MonoBehaviour
 {
+    public bool targetSelected = false;
+
+    public bool skillMenuTop = true;
 
     private Button buttonPrefab;
 
@@ -13,12 +16,15 @@ public class SkillMenu : MonoBehaviour
     public List<Object> bagContent = new List<Object>();
 
     [SerializeField]
-    private Canvas inventoryCanvas;
+    private Canvas inventoryCanvasTop;
+    [SerializeField]
+    private Canvas inventoryCanvasBottom;
 
 
     private void Awake()
     {
-        inventoryCanvas.gameObject.SetActive(false);
+        inventoryCanvasTop.gameObject.SetActive(false);
+        inventoryCanvasBottom.gameObject.SetActive(false);
     }
 
     public void AddObject(Object obj)
@@ -50,10 +56,39 @@ public class SkillMenu : MonoBehaviour
 
     public void OpenInventory()
     {
-        inventoryCanvas.gameObject.SetActive(true);
+        if (targetSelected)
+        {
+            if (skillMenuTop)
+            {
+                inventoryCanvasTop.gameObject.SetActive(true);
+            }
+            if (skillMenuTop == false)
+            {
+                inventoryCanvasBottom.gameObject.SetActive(true);
+            }
+        }
     }
     public void CloseInventory()
     {
-        inventoryCanvas.gameObject.SetActive(false);
+        if (skillMenuTop)
+        {
+            inventoryCanvasTop.gameObject.SetActive(false);
+        }
+        if (skillMenuTop == false)
+        {
+            inventoryCanvasBottom.gameObject.SetActive(false);
+        }
+    }
+    public void changeSkillMenu()
+    {
+        skillMenuTop = !skillMenuTop;
+    }
+    public void setTargetSelectedTrue()
+    {
+        targetSelected = true;
+    }
+    public void setTargetSelectedFalse()
+    {
+        targetSelected = false;
     }
 }
