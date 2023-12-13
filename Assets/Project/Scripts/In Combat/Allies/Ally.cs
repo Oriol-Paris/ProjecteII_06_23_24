@@ -87,7 +87,7 @@ public class Ally : Character
         {
             defensePressed = false;
             Debug.Log("Defense Called");
-            DefenseUp(50);
+            DefenseUp();
             OnTurnEnd();
         }
         if(skillPressed)

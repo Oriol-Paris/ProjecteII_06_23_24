@@ -59,7 +59,7 @@ public abstract class Character : MonoBehaviour
 
 
     //remember that increase is a percentage->%, it will reduce directly the atkVal by the percentage
-    protected void DefenseUp(int increase)
+    protected void DefenseUp()
     {
         defenseCalled = true;
     }
@@ -86,7 +86,7 @@ public abstract class Character : MonoBehaviour
             float myDefense = other.physicalDefense;
 
             if (defenseCalled)
-                other.physicalDefense = physicalDefense * 1.5f;
+                other.physicalDefense = physicalDefense * 2.0f;
 
             float atkVal = 0.01f *Random.Range(85,100) * (((0.2f * level + 1) * strength * atkPow)/ (25.0f* other.physicalDefense) + 2) ;
             if (Random.Range(1, 100) < luck * 1.25)
@@ -126,7 +126,7 @@ public abstract class Character : MonoBehaviour
             float myDefense = other.magicalDefense;
 
             if(defenseCalled)
-                other.magicalDefense = magicalDefense * 1.5f;
+                other.magicalDefense = magicalDefense * 2.0f;
             
             
             float atkVal = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * other.magicalDefense) + 2);
