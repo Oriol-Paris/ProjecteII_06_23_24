@@ -129,7 +129,81 @@ public abstract class Character : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-       
+
+    protected virtual void MagicDamageMultitarget2(Character other1, Character other2)
+    {
+        if (Random.Range(1, 100) < accuracy)
+        {
+            float enemy1Defense = other1.resistance * 0.7f + other1.intelligence * 0.3f;
+            float enemy2Defense = other2.resistance * 0.7f + other2.intelligence * 0.3f;
+            float atk1Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * enemy1Defense) + 2);
+            float atk2Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * enemy2Defense) + 2);
+            if (Random.Range(1, 100) < luck * 1.25)
+            {
+                atk1Val = atk1Val * 1.5f;
+                atk2Val = atk2Val * 1.5f;
+            }
+
+            other1.health -= atk1Val;
+            other2.health -= atk2Val;
+            string atkMessage = "Attacks Connected! -> " + atk1Val.ToString() + " damage and " + atk2Val.ToString() + "damage.";
+            Debug.Log(atkMessage);
+        }
+        else
+        {
+            Debug.Log("Attacks Missed!");
+        }
+        if (other1.health < 0)
+        {
+            Destroy(other1.gameObject);
+        }
+        if (other2.health < 0)
+        {
+            Destroy(other2.gameObject);
+        }
+    }
+
+    protected virtual void MagicDamageMultitarget3(Character other1, Character other2, Character other3)
+    {
+        if (Random.Range(1, 100) < accuracy)
+        {
+            float enemy1Defense = other1.resistance * 0.7f + other1.intelligence * 0.3f;
+            float enemy2Defense = other2.resistance * 0.7f + other2.intelligence * 0.3f;
+            float enemy3Defense = other3.resistance * 0.7f + other3.intelligence * 0.3f;
+            float atk1Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * enemy1Defense) + 2);
+            float atk2Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * enemy2Defense) + 2);
+            float atk3Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * enemy3Defense) + 2);
+            if (Random.Range(1, 100) < luck * 1.25)
+            {
+                atk1Val = atk1Val * 1.5f;
+                atk2Val = atk2Val * 1.5f;
+                atk3Val = atk3Val * 1.5f;
+            }
+                
+            other1.health -= atk1Val;
+            other2.health -= atk2Val;
+            other3.health -= atk3Val;
+            string atkMessage = "Attacks Connected! -> " + atk1Val.ToString() + " damage, " + atk2Val.ToString() + " damage and " + atk3Val.ToString() + "damage.";
+            Debug.Log(atkMessage);
+        }
+        else
+        {
+            Debug.Log("Attacks Missed!");
+        }
+        if (other1.health < 0)
+        {
+            Destroy(other1.gameObject);
+        }
+        if (other2.health < 0)
+        {
+            Destroy(other2.gameObject);
+        }
+        if (other3.health < 0)
+        {
+            Destroy(other3.gameObject);
+        }
+    }
+
     public void TurnChanger()   
     {  
         activeTurn = !activeTurn;

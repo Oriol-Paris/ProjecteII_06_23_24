@@ -56,8 +56,6 @@ public class SkillMenu : MonoBehaviour
 
     public void OpenInventory()
     {
-        if (targetSelected)
-        {
             if (skillMenuTop)
             {
                 inventoryCanvasTop.gameObject.SetActive(true);
@@ -66,7 +64,6 @@ public class SkillMenu : MonoBehaviour
             {
                 inventoryCanvasBottom.gameObject.SetActive(true);
             }
-        }
     }
     public void CloseInventory()
     {

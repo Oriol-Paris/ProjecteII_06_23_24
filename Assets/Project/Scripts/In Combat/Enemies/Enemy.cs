@@ -19,13 +19,29 @@ public class Enemy : Character
         return allies[0];
     }
 
+    //public void SetAsTarget()
+    //{
+    //    foreach(Ally ally in allies)
+    //    {
+    //        if (!ally.IsFinished())
+    //        {
+    //            ally.SetTarget(this);
+    //        }
+    //    }
+    //}
     public void SetAsTarget()
     {
-        foreach(Ally ally in allies)
+        foreach (Ally ally in allies)
         {
             if (!ally.IsFinished())
             {
-                ally.SetTarget(this);
+                ally.SetPossibleTarget(this);
+                if (!ally.Targeted1st() || !ally.Has2ndTarget())
+                    ally.SetTarget(this);
+                if(ally.Has2ndTarget() && ally.Targeted1st() && !ally.Targeted2nd() /*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
+                    ally.Set2ndTarget(this);
+                if (ally.Has3rdTarget() && ally.Targeted1st() && ally.Targeted2nd() && !ally.Targeted3rd()/*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
+                    ally.Set3rdTarget(this);
             }
         }
     }
