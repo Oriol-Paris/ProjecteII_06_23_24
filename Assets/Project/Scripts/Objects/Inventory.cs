@@ -55,8 +55,6 @@ public class Inventory : MonoBehaviour
         bagContent.Remove(obj);
         Destroy(obj.gameObject);
 
-        
-       
     }
     public void OpenInventory()
     {
