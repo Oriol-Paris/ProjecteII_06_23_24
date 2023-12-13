@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class EnergyBar : MonoBehaviour
 {
     [SerializeField]
     private Slider slider;
@@ -12,10 +12,10 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        slider.maxValue = character.maxHealth;
+        slider.maxValue = character.GetMaxMana();
     }
     void Update()
     {
-        slider.value = character.health;
+        slider.value = character.GetMana();
     }
 }

@@ -9,21 +9,39 @@ public class Enemy : Character
     [SerializeField]
     private List<Ally> allies;
 
+    int defaultAttackPower = 10;
+
     public Ally SetTarget()
     {
-        allies = allies.OrderBy(ally => ally.health).ToList();
-        if (!(allies[0].health > 0))
+        allies = allies.OrderBy(ally => ally.GetHealth()).ToList();
+        if (!(allies[0].GetHealth() > 0))
             return allies[1];
         return allies[0];
     }
 
+    //public void SetAsTarget()
+    //{
+    //    foreach(Ally ally in allies)
+    //    {
+    //        if (!ally.IsFinished())
+    //        {
+    //            ally.SetTarget(this);
+    //        }
+    //    }
+    //}
     public void SetAsTarget()
     {
-        foreach(Ally ally in allies)
+        foreach (Ally ally in allies)
         {
             if (!ally.IsFinished())
             {
-                ally.SetTarget(this);
+                ally.SetPossibleTarget(this);
+                if (!ally.Targeted1st() || !ally.Has2ndTarget())
+                    ally.SetTarget(this);
+                if(ally.Has2ndTarget() && ally.Targeted1st() && !ally.Targeted2nd() /*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
+                    ally.Set2ndTarget(this);
+                if (ally.Has3rdTarget() && ally.Targeted1st() && ally.Targeted2nd() && !ally.Targeted3rd()/*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
+                    ally.Set3rdTarget(this);
             }
         }
     }
@@ -43,7 +61,7 @@ public class Enemy : Character
         Ally a = SetTarget();
         if (a != null)
         {
-            PhysiqueDamage(SetTarget());
+            PhysiqueDamage(SetTarget(), defaultAttackPower);
         }
         Debug.Log("End Turn");
         OnTurnEnd();
