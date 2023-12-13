@@ -35,7 +35,7 @@ public class Enemy : Character
         {
             if (!ally.IsFinished())
             {
-                ally.SetPossibleTarget(this);
+                //ally.SetPossibleTarget(this);
                 if (!ally.Targeted1st() || !ally.Has2ndTarget())
                     ally.SetTarget(this);
                 if(ally.Has2ndTarget() && ally.Targeted1st() && !ally.Targeted2nd() /*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)

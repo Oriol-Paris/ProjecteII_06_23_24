@@ -127,7 +127,7 @@ public class Ally : Character
     {
         //if(enemy1Targeted && enemy2Targeted)
         //{
-            MagicDamageMultitarget2(en1, en2);
+            MagicDamageMultitarget2(en1, en2, 5);
         //}
         //enemy1Targeted = false;
         //enemy2Targeted = false;
@@ -137,7 +137,7 @@ public class Ally : Character
     {
         if(enemy1Targeted && enemy2Targeted && enemy3Targeted)
         {
-            MagicDamageMultitarget3(en1, en2, en3);
+            MagicDamageMultitarget3(en1, en2, en3, 5);
         }
         enemy1Targeted = false;
         enemy2Targeted = false;
