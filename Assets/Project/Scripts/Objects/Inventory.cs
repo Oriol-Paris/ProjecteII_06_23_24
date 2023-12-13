@@ -35,19 +35,19 @@ public class Inventory : MonoBehaviour
         bagContent.Add(obj);
 
 
-        //Buscar el primer botón vacío
+        //Buscar el primer botï¿½n vacï¿½o
 
-        //cambiar el estado del boton, cambiar el nombre del botón
-        //cambiar su color y lo más importante, el OnClick debe llamar a Use() y a Destroyer
+        //cambiar el estado del boton, cambiar el nombre del botï¿½n
+        //cambiar su color y lo mï¿½s importante, el OnClick debe llamar a Use() y a Destroyer
        
             //Cambiar el Use()
             //obj.Use();
             Destroyer(obj);
 
 
-        //Al eliminar a un objeto de la bolsa, los que estan detrás de este deben pasar a un puesto mayor
-        //es decir, un puesto más cerca de 0
-        //su color volvera a alpha 0, su texto en blanco una vez más...
+        //Al eliminar a un objeto de la bolsa, los que estan detrï¿½s de este deben pasar a un puesto mayor
+        //es decir, un puesto mï¿½s cerca de 0
+        //su color volvera a alpha 0, su texto en blanco una vez mï¿½s...
     }
 
     private void Destroyer(Object obj)
@@ -55,8 +55,6 @@ public class Inventory : MonoBehaviour
         bagContent.Remove(obj);
         Destroy(obj.gameObject);
 
-        
-       
     }
     public void OpenInventory()
     {
