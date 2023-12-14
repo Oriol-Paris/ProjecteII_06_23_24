@@ -10,9 +10,22 @@ public class Mugetsu : Skill
         
     }
 
-    protected override void Use()
+    public override void Use()
     {
         ResourcesUsed();
-        caster.MagicDamageMultitarget2();
+        if(isAlly)
+        {
+            if (casterAllyTop.usingSkill)
+            {
+                casterAllyTop.MultiTarget2(atkPow);
+                casterAllyTop.OnTurnEnd();
+            }
+            if (casterAllyBottom.usingSkill)
+            {
+                casterAllyBottom.MultiTarget2(atkPow);
+                casterAllyBottom.OnTurnEnd();
+            }
+            
+        }
     }
 }

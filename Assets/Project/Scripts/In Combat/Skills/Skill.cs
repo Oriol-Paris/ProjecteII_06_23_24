@@ -14,20 +14,42 @@ public class Skill : MonoBehaviour
     public int lifeRecoil { get; private set; }
 
     [field: SerializeField]
+    public bool isAlly;
+
+    [field: SerializeField]
     protected Character caster;
+
+    [field: SerializeField]
+    protected Ally casterAllyTop;
+    [field: SerializeField]
+    protected Ally casterAllyBottom;
+
+    [field: SerializeField]
+    protected Enemy casterEnemy;
     // Start is called before the first frame update
     void Start()
     {
         
     }
-    protected virtual void Use()
+    public virtual void Use()
     {
-
+        
     }
     protected void ResourcesUsed()
     {
-        caster.SetHealth(caster.GetHealth() - lifeRecoil);
-        caster.SetMana(caster.GetMana() - manaNeeded);
+        if (isAlly)
+        {
+            if (casterAllyTop.usingSkill)
+            {
+                casterAllyTop.SetHealth(casterAllyTop.GetHealth() - lifeRecoil);
+                casterAllyTop.SetMana(casterAllyTop.GetMana() - manaNeeded);
+            }
+            if (casterAllyBottom.usingSkill)
+            {
+                casterAllyBottom.SetHealth(casterAllyBottom.GetHealth() - lifeRecoil);
+                casterAllyBottom.SetMana(casterAllyBottom.GetMana() - manaNeeded);
+            }
+        }
     }
 
 }
