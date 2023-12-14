@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   itemName: Potion
-  icon: {fileID: 0}
+  value: 20
+  icon: {fileID: 21300000, guid: 7d4d5d03ea6f7c54dac97e264bcdbb4c, type: 3}
+  itemType: 0

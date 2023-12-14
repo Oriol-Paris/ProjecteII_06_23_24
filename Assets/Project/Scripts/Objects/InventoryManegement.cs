@@ -12,6 +12,8 @@ public class InventoryManegement : MonoBehaviour
     public Transform ItemContent;
     public GameObject InventoryItem;
 
+    public Toggle enableRemove;
+
     public InventoryItemsController[] InventoryItems;
 
     private void Awake()
@@ -50,14 +52,34 @@ public class InventoryManegement : MonoBehaviour
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
+
+            if(enableRemove.isOn)
+                removeButton.gameObject.SetActive(true);
+
         }
     }
 
-    //enable items Removal
+    public void EnableItemsRemove()
+    {
+        if(EnableRemove.isOn)
+        {
+            foreach(Transform item in ItemContent)
+            {
+                item.Find("RemoveButton").gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach(Transform item in ItemContent)
+            {
+                item.Find("RemoveButton").gameObject.SetActive(false);
+            }
+        }
+    }
 
     public void SetInventoryItems()
     {
-        InventoryItems = ItemContent.GetComponentInChildren<InventoryItemsController>();
+        InventoryItems = ItemContent.GetComponentsInChildren<InventoryItemsController>();
 
         for(int i = 0; i < Items.Count; i++)
         {
