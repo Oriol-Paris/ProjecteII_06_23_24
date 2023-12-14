@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class InventoryManegement : MonoBehaviour
 {
     public static InventoryManegement Instance;
-    public List<Item> Items = new List<Item>();
+    public List<Item> items = new List<Item>();
 
-    public Transform ItemContent;
-    public GameObject InventoryItem;
+    public Transform itemContent;
+    public GameObject inventoryItem;
 
     public Toggle enableRemove;
 
-    public InventoryItemsController[] InventoryItems;
+    public InventoryItemsController[] inventoryItems;
 
     private void Awake()
     {
@@ -24,28 +24,28 @@ public class InventoryManegement : MonoBehaviour
     
 
     public void Add(Item item)
-    { Items.Add(item); }
+    { items.Add(item); }
 
     public void Remove(Item item)
-    { Items.Remove(item); }
+    { items.Remove(item); }
 
     public void RemoveAll()
     {
-        Items.Clear();
+        items.Clear();
     }
 
     public void ListItems()
     {
         //Clean content
 
-        foreach (Transform item in ItemContent)
+        foreach (Transform item in itemContent)
         {
             Destroy(item.gameObject);
         }
 
-        foreach (var item in Items)
+        foreach (var item in items)
         {
-            GameObject obj = Instantiate(InventoryItem, ItemContent);
+            GameObject obj = Instantiate(inventoryItem, itemContent);
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
@@ -61,16 +61,16 @@ public class InventoryManegement : MonoBehaviour
 
     public void EnableItemsRemove()
     {
-        if(EnableRemove.isOn)
+        if(enableRemove.isOn)
         {
-            foreach(Transform item in ItemContent)
+            foreach(Transform item in itemContent)
             {
                 item.Find("RemoveButton").gameObject.SetActive(true);
             }
         }
         else
         {
-            foreach(Transform item in ItemContent)
+            foreach(Transform item in itemContent)
             {
                 item.Find("RemoveButton").gameObject.SetActive(false);
             }
@@ -79,11 +79,11 @@ public class InventoryManegement : MonoBehaviour
 
     public void SetInventoryItems()
     {
-        InventoryItems = ItemContent.GetComponentsInChildren<InventoryItemsController>();
+        inventoryItems = itemContent.GetComponentsInChildren<InventoryItemsController>();
 
-        for(int i = 0; i < Items.Count; i++)
+        for(int i = 0; i < items.Count; i++)
         {
-            InventoryItems[i].AddItem(Items[i]);
+            inventoryItems[i].AddItem(items[i]);
         }
     }
 }
