@@ -45,7 +45,8 @@ public class SkillMenu : MonoBehaviour
     private void Destroyer(Object obj)
     {
         bagContent.Remove(obj);
-        Destroy(obj.gameObject);
+        //falla
+        //Destroy(obj.gameObject);
     }
 
 

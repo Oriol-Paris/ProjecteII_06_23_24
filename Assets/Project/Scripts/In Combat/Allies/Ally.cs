@@ -18,9 +18,6 @@ public class Ally : Character
 
     private int defaultAttackPower = 10;
 
-    [field: SerializeField]
-    public Inventory alliesInventory { get; protected set; }
-
 
     [SerializeField]
     public Button attackButton, defenseButton, skillButton, bagButton, fleeButton;
