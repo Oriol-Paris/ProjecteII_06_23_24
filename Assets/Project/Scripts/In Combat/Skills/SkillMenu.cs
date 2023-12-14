@@ -7,7 +7,7 @@ public class SkillMenu : MonoBehaviour
 {
     public bool targetSelected = false;
 
-    public bool skillMenuTop = true;
+    public bool skillMenuTop = false;
 
     private Button buttonPrefab;
 
