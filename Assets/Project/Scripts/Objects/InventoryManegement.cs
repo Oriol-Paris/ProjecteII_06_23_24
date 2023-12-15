@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class InventoryManegement : MonoBehaviour
 {
+    public GameObject inventoryCanvas;
+
     public static InventoryManegement Instance;
     public List<Item> items = new List<Item>();
 
@@ -36,6 +38,9 @@ public class InventoryManegement : MonoBehaviour
 
     public void ListItems()
     {
+
+        //Open Inventory
+        inventoryCanvas.SetActive(true);
         //Clean content
 
         foreach (Transform item in itemContent)
@@ -46,15 +51,15 @@ public class InventoryManegement : MonoBehaviour
         foreach (var item in items)
         {
             GameObject obj = Instantiate(inventoryItem, itemContent);
-            var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+            var itemName = obj.transform.Find("ItemName").GetComponent<TMPro.TextMeshProUGUI>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
 
-            if(enableRemove.isOn)
-                removeButton.gameObject.SetActive(true);
+            //if(enableRemove.isOn)
+            //    removeButton.gameObject.SetActive(true);
 
         }
     }
