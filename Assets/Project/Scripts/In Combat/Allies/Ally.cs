@@ -24,9 +24,6 @@ public class Ally : Character
     [field: SerializeField]
     protected SkillMenu skillMenu;
 
-    [field: SerializeField]
-    public Inventory alliesInventory { get; protected set; }
-
     [SerializeField]
     public Button attackButton, defenseButton, skillButton, bagButton, fleeButton;
 
