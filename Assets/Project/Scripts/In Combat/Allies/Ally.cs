@@ -24,8 +24,7 @@ public class Ally : Character
     [field: SerializeField]
     protected SkillMenu skillMenu;
 
-    [field: SerializeField]
-    public Inventory alliesInventory { get; protected set; }
+  
 
     [SerializeField]
     public Button attackButton, defenseButton, skillButton, bagButton, fleeButton;
@@ -212,10 +211,12 @@ public class Ally : Character
 
     public void changeSecondTargetState()
     {
+        Debug.Log("Select 2 Targets:");
         secondTarget = !secondTarget;
     }
     public void changeThirdTargetState()
     {
+        Debug.Log("Select 3 Targets:");
         secondTarget = !secondTarget;
         thirdTarget = !thirdTarget;
     }
