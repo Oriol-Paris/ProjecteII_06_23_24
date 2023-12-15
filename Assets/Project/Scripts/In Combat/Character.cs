@@ -40,21 +40,6 @@ public abstract class Character : MonoBehaviour
 
     public bool skillUsed = false;
 
-    //protected void RecoverHp(float hp){health += hp;}
-    //protected void RecoverMana(float m){mana += mana;}
-    //protected void IncreaseResistance(int resistanceUp){resistance += resistanceUp;}
-    //protected void IncreaseStrenght(int strengthUp){strength += strengthUp;}
-    //protected void IncreaseIntelligence(int intelligenceUp){intelligence += intelligenceUp;}
-    //public void IncreaseVitality(int vitalityUp){vitality += vitalityUp;}
-    //public void IncreaseLuck(int luckUp){luck += luckUp;}
-    //public void DecreasResistance(int resistanceDown){resistance -= resistanceDown;}
-    //public void DecreaseStrenght(int strengthDown){strength -= strengthDown;}
-    //public void DecreaseIntelligence(int intelligenceDown){intelligence -= intelligenceDown;}
-    //public void DecreaseVitality(int vitalityDown){vitality -= vitalityDown;}
-    //public void DecreaseLuck(int luckDown){luck -= luckDown;}
-    //public void InmortalityActivated(){isInmortal = true;}
-    //public void InmortalityDesactivated(){isInmortal = false;}
-
     protected bool GetIsInmortal() { return isInmortal;}
 
 
@@ -118,7 +103,7 @@ public abstract class Character : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-    protected virtual void MagicDamage(Character other)
+    protected virtual void MagicDamage(Character other, int atkPow)
     {
         if (Random.Range(1, 100) < accuracy)
         {
@@ -129,7 +114,7 @@ public abstract class Character : MonoBehaviour
                 other.magicalDefense = magicalDefense * 2.0f;
             
             
-            float atkVal = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * other.magicalDefense) + 2);
+            float atkVal = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence * atkPow) / (25.0f * other.magicalDefense) + 2);
             if (Random.Range(1, 100) < luck * 1.25)
                 atkVal = atkVal * 1.5f;
             other.health -= atkVal;
@@ -159,14 +144,14 @@ public abstract class Character : MonoBehaviour
         }
     }
 
-    protected virtual void MagicDamageMultitarget2(Character other1, Character other2)
+    protected virtual void MagicDamageMultitarget2(Character other1, Character other2, int atkPow)
     {
         if (Random.Range(1, 100) < accuracy)
         {
             float enemy1Defense = other1.resistance * 0.7f + other1.intelligence * 0.3f;
             float enemy2Defense = other2.resistance * 0.7f + other2.intelligence * 0.3f;
-            float atk1Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * enemy1Defense) + 2);
-            float atk2Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * enemy2Defense) + 2);
+            float atk1Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence * atkPow) / (25.0f * enemy1Defense) + 2);
+            float atk2Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence * atkPow) / (25.0f * enemy2Defense) + 2);
             if (Random.Range(1, 100) < luck * 1.25)
             {
                 atk1Val = atk1Val * 1.5f;
@@ -192,16 +177,16 @@ public abstract class Character : MonoBehaviour
         }
     }
 
-    protected virtual void MagicDamageMultitarget3(Character other1, Character other2, Character other3)
+    protected virtual void MagicDamageMultitarget3(Character other1, Character other2, Character other3, int atkPow)
     {
         if (Random.Range(1, 100) < accuracy)
         {
             float enemy1Defense = other1.resistance * 0.7f + other1.intelligence * 0.3f;
             float enemy2Defense = other2.resistance * 0.7f + other2.intelligence * 0.3f;
             float enemy3Defense = other3.resistance * 0.7f + other3.intelligence * 0.3f;
-            float atk1Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * enemy1Defense) + 2);
-            float atk2Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * enemy2Defense) + 2);
-            float atk3Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence) / (25.0f * enemy3Defense) + 2);
+            float atk1Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence * atkPow) / (25.0f * enemy1Defense) + 2);
+            float atk2Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence * atkPow) / (25.0f * enemy2Defense) + 2);
+            float atk3Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence * atkPow) / (25.0f * enemy3Defense) + 2);
             if (Random.Range(1, 100) < luck * 1.25)
             {
                 atk1Val = atk1Val * 1.5f;

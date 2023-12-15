@@ -35,13 +35,22 @@ public class Enemy : Character
         {
             if (!ally.IsFinished())
             {
-                ally.SetPossibleTarget(this);
-                if (!ally.Targeted1st() || !ally.Has2ndTarget())
+                //ally.SetPossibleTarget(this);
+                if (!ally.Targeted1st())
+                {
+                    Debug.Log("Target 1 selected");
                     ally.SetTarget(this);
-                if(ally.Has2ndTarget() && ally.Targeted1st() && !ally.Targeted2nd() /*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
+                }
+                else if(ally.Has2ndTarget() && ally.Targeted1st() && !ally.Targeted2nd() /*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
+                {
+                    Debug.Log("Target 2 selected");
                     ally.Set2ndTarget(this);
-                if (ally.Has3rdTarget() && ally.Targeted1st() && ally.Targeted2nd() && !ally.Targeted3rd()/*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
+                }  
+                else if (ally.Has3rdTarget() && ally.Targeted1st() && ally.Targeted2nd() && !ally.Targeted3rd()/*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
+                {
+                    Debug.Log("Target 3 selected");
                     ally.Set3rdTarget(this);
+                }
             }
         }
     }

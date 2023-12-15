@@ -7,7 +7,7 @@ public class SkillMenu : MonoBehaviour
 {
     public bool targetSelected = false;
 
-    public bool skillMenuTop = true;
+    public bool skillMenuTop = false;
 
     private Button buttonPrefab;
 
@@ -45,7 +45,8 @@ public class SkillMenu : MonoBehaviour
     private void Destroyer(Object obj)
     {
         bagContent.Remove(obj);
-        Destroy(obj.gameObject);
+        //falla
+        //Destroy(obj.gameObject);
     }
 
 

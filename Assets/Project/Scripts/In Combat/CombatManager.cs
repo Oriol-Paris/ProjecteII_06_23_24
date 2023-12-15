@@ -13,6 +13,8 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     private List<Character> characters = new List<Character>();
 
+    bool turnFinished = false;
+
 
     protected void Awake()
     {
@@ -36,8 +38,10 @@ public class CombatManager : MonoBehaviour
         if (!characters[0].IsFinished())
         {
             characters[0].OnTurnUpdate();
+            if (characters[0].IsFinished())
+                StartCoroutine(WaitBetweenActions());
         }
-        else
+        if (turnFinished)
         {
             RemoveDeadCharacters();
 
@@ -51,7 +55,22 @@ public class CombatManager : MonoBehaviour
             Debug.Log("Turn Change");
             characters[0].TurnChanger();
             characters[0].OnTurnStart();
+            turnFinished = false;
         }
+    }
+
+    IEnumerator WaitBetweenActions()
+    {
+
+        float timePassed = 0.0f;
+        float maxTime = 2.0f;
+        while (timePassed < maxTime && !Input.anyKey)
+        {
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+        turnFinished = true;
+
     }
 
 

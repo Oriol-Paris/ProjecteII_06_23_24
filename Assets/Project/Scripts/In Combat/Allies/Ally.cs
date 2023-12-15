@@ -15,12 +15,14 @@ public class Ally : Character
     private bool enemy3Targeted = false;
     private bool secondTarget = false;
     private bool thirdTarget = false;
+    public bool usingSkill = false;
 
     private int defaultAttackPower = 10;
 
     [field: SerializeField]
-    public Inventory alliesInventory { get; protected set; }
-
+    protected Skill skill;
+    [field: SerializeField]
+    protected SkillMenu skillMenu;
 
     [SerializeField]
     public Button attackButton, defenseButton, skillButton, bagButton, fleeButton;
@@ -60,19 +62,20 @@ public class Ally : Character
 
     public override void OnTurnStart()
     {
+        skillMenu.changeSkillMenu();
         sr.color = new Color(0, 255, 255, 1);
     }
 
     public override void OnTurnEnd()
     {
+        usingSkill = false;
         sr.color = Color.white;
         activeTurn = false;
     }
 
     public override void OnTurnUpdate()
     {
-        
-        if(attackPressed)
+        if (attackPressed)
         {
             attackPressed = false;
             Debug.Log("Attack Called");
@@ -92,12 +95,19 @@ public class Ally : Character
         }
         if(skillPressed)
         {
+            skill.isAlly = true;
+            usingSkill = true;
+            en = null;
+            en1 = null;
+            en2 = null;
+            en3 = null;
+            secondTarget = false;
+            thirdTarget = false;
+            enemy1Targeted = false;
+            enemy2Targeted = false;
+            enemy3Targeted = false;
             skillPressed = false;
             Debug.Log("Skill Called");
-            //if (enemy1Targeted)
-            //{
-            //    MagicDamage(en1);
-            //}
         }
         if(bagPressed)
         {
@@ -123,25 +133,27 @@ public class Ally : Character
     {
         return !activeTurn;
     }
-    public void MultiTarget2()
+    public void MultiTarget2(int atkPow)
     {
+        skill.isAlly = true;
         //if(enemy1Targeted && enemy2Targeted)
         //{
-            MagicDamageMultitarget2(en1, en2);
+            MagicDamageMultitarget2(en1, en2, atkPow);
         //}
         //enemy1Targeted = false;
         //enemy2Targeted = false;
         //enemy3Targeted = false;
 }
-    public void MultiTarget3()
+    public void MultiTarget3(int atkPow)
     {
-        if(enemy1Targeted && enemy2Targeted && enemy3Targeted)
-        {
-            MagicDamageMultitarget3(en1, en2, en3);
-        }
-        enemy1Targeted = false;
-        enemy2Targeted = false;
-        enemy3Targeted = false;
+        skill.isAlly = true;
+        //if (enemy1Targeted && enemy2Targeted && enemy3Targeted)
+        //{
+            MagicDamageMultitarget3(en1, en2, en3, atkPow);
+        //}
+        //enemy1Targeted = false;
+        //enemy2Targeted = false;
+        //enemy3Targeted = false;
     }
     public bool Has2ndTarget()
     {
@@ -201,6 +213,7 @@ public class Ally : Character
     }
     public void changeThirdTargetState()
     {
+        secondTarget = !secondTarget;
         thirdTarget = !thirdTarget;
     }
 }
