@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class Ally : Character
 {
-    private Enemy en = null;
-    private Enemy en1 = null;
-    private Enemy en2 = null;
-    private Enemy en3 = null;
+    public Enemy en { get; private set; } = null;
+    public Enemy en1 { get; private set; } = null;
+    public Enemy en2 { get; private set; } = null;
+    public Enemy en3 { get; private set; } = null;
     private bool enemy1Targeted = false;
     private bool enemy2Targeted = false;
     private bool enemy3Targeted = false;

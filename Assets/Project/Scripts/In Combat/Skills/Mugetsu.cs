@@ -17,6 +17,7 @@ public class Mugetsu : Skill
         {
             if (casterAllyTop.usingSkill)
             {
+                atkPow = (int)casterAllyTop.en1.GetHealth()/2 + (int)casterAllyTop.en2.GetHealth()/2;
                 casterAllyTop.MultiTarget2(atkPow);
                 casterAllyTop.OnTurnEnd();
             }

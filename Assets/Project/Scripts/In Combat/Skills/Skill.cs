@@ -8,7 +8,7 @@ public class Skill : MonoBehaviour
     [field:SerializeField]
     public float manaNeeded { get; private set; }
     [field: SerializeField]
-    public int atkPow{ get; private set; }
+    public int atkPow{ get; protected set; }
 
     [field: SerializeField]
     public int lifeRecoil { get; private set; }
