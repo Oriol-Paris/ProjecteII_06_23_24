@@ -19,7 +19,13 @@ public class MainMenuUI : MonoBehaviour
         MainMenuCanvas.gameObject.SetActive(false);
         startGameCanvas.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(2f);
+        float timePassed = 0.0f;
+        float maxTime = 2.0f;
+        while(timePassed < maxTime && !Input.anyKey)
+        {
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
 
         SceneManager.LoadSceneAsync(1);
     }

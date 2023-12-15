@@ -40,21 +40,6 @@ public abstract class Character : MonoBehaviour
 
     public bool skillUsed = false;
 
-    //protected void RecoverHp(float hp){health += hp;}
-    //protected void RecoverMana(float m){mana += mana;}
-    //protected void IncreaseResistance(int resistanceUp){resistance += resistanceUp;}
-    //protected void IncreaseStrenght(int strengthUp){strength += strengthUp;}
-    //protected void IncreaseIntelligence(int intelligenceUp){intelligence += intelligenceUp;}
-    //public void IncreaseVitality(int vitalityUp){vitality += vitalityUp;}
-    //public void IncreaseLuck(int luckUp){luck += luckUp;}
-    //public void DecreasResistance(int resistanceDown){resistance -= resistanceDown;}
-    //public void DecreaseStrenght(int strengthDown){strength -= strengthDown;}
-    //public void DecreaseIntelligence(int intelligenceDown){intelligence -= intelligenceDown;}
-    //public void DecreaseVitality(int vitalityDown){vitality -= vitalityDown;}
-    //public void DecreaseLuck(int luckDown){luck -= luckDown;}
-    //public void InmortalityActivated(){isInmortal = true;}
-    //public void InmortalityDesactivated(){isInmortal = false;}
-
     protected bool GetIsInmortal() { return isInmortal;}
 
 
