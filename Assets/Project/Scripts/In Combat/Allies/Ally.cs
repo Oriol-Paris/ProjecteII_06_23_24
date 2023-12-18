@@ -68,23 +68,49 @@ public class Ally : Character
 
     public override void OnTurnEnd()
     {
+        attackAnimation = false;
+        Debug.Log("FinishTurn");
+        activeTurn = false;
         usingSkill = false;
         sr.color = Color.white;
-        activeTurn = false;
     }
+    protected IEnumerator AttackMove()
+    {
 
+        float timePassed = 0.0f;
+        float maxTime = 2.0f;
+        Debug.Log("Waiting for attack");
+        while (timePassed < maxTime || Input.anyKey)
+        {
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log("Done");
+        attackAnimation = true;
+        PhysiqueDamage(en1, defaultAttackPower);
+    }
     public override void OnTurnUpdate()
     {
         if (attackPressed)
         {
-            attackPressed = false;
-            Debug.Log("Attack Called");
+            
+            
             if(enemy1Targeted)
             {
-                PhysiqueDamage(en1, defaultAttackPower);
+                StartCoroutine(AttackMove());
+                //PhysiqueDamage(en1, defaultAttackPower);
+                //if (attackAnimation)
+                //{
+                    Debug.Log("End Turn");
+                    OnTurnEnd();
+                    attackPressed = false;
+
+                //}
+                Debug.Log("Attack Called");
                 enemy1Targeted = false;
-                OnTurnEnd();
+                attackPressed = false;
             }
+            attackPressed = false;
         }
         if(defensePressed)
         {
