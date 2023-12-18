@@ -88,6 +88,11 @@ public class Ally : Character
         Debug.Log("Done");
         attackAnimation = true;
         PhysiqueDamage(en1, defaultAttackPower);
+        Debug.Log("End Turn");
+        OnTurnEnd();
+        attackPressed = false;
+        Debug.Log("Attack Called");
+        enemy1Targeted = false;
     }
     public override void OnTurnUpdate()
     {
@@ -101,14 +106,11 @@ public class Ally : Character
                 //PhysiqueDamage(en1, defaultAttackPower);
                 //if (attackAnimation)
                 //{
-                    Debug.Log("End Turn");
-                    OnTurnEnd();
-                    attackPressed = false;
+                    
 
                 //}
-                Debug.Log("Attack Called");
-                enemy1Targeted = false;
-                attackPressed = false;
+                
+                //attackPressed = false;
             }
             attackPressed = false;
         }
