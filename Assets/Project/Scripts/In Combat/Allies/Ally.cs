@@ -74,6 +74,7 @@ public class Ally : Character
         usingSkill = false;
         sr.color = Color.white;
     }
+<<<<<<< HEAD
     protected override IEnumerator AttackMove()
     {
         IEnumerator AttackMove = base.AttackMove();
@@ -87,6 +88,22 @@ public class Ally : Character
         attackPressed = false;
         enemy1Targeted = false;
         OnTurnEnd();
+=======
+    protected IEnumerator AttackMove()
+    {
+
+        float timePassed = 0.0f;
+        float maxTime = 2.0f;
+        Debug.Log("Waiting for attack");
+        while (timePassed < maxTime || Input.anyKey)
+        {
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log("Done");
+        attackAnimation = true;
+        PhysiqueDamage(en1, defaultAttackPower);
+>>>>>>> 685b7c6039cd6cd21eedc262f66685fa93eb9b93
     }
     public override void OnTurnUpdate()
     {
@@ -97,6 +114,20 @@ public class Ally : Character
             if(enemy1Targeted)
             {
                 StartCoroutine(AttackMove());
+<<<<<<< HEAD
+=======
+                //PhysiqueDamage(en1, defaultAttackPower);
+                //if (attackAnimation)
+                //{
+                    Debug.Log("End Turn");
+                    OnTurnEnd();
+                    attackPressed = false;
+
+                //}
+                Debug.Log("Attack Called");
+                enemy1Targeted = false;
+                attackPressed = false;
+>>>>>>> 685b7c6039cd6cd21eedc262f66685fa93eb9b93
             }
             attackPressed = false;
         }

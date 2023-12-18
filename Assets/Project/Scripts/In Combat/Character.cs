@@ -65,8 +65,12 @@ public abstract class Character : MonoBehaviour
         magicalDefense = resistance * 0.7f + intelligence * 0.3f;
     }
 
+<<<<<<< HEAD
 
     protected virtual IEnumerator AttackMove()
+=======
+    protected IEnumerator AttackMove()
+>>>>>>> 685b7c6039cd6cd21eedc262f66685fa93eb9b93
     {
 
         float timePassed = 0.0f;
@@ -78,12 +82,21 @@ public abstract class Character : MonoBehaviour
             yield return null;
         }
         Debug.Log("Done");
+<<<<<<< HEAD
+=======
+        attackAnimation = true;
+
+>>>>>>> 685b7c6039cd6cd21eedc262f66685fa93eb9b93
     }
     protected virtual void PhysiqueDamage(Character other, int atkPow)
     {
         
         if (attackAnimation)
         {
+<<<<<<< HEAD
+=======
+            Debug.Log("Attacking");
+>>>>>>> 685b7c6039cd6cd21eedc262f66685fa93eb9b93
             if (Random.Range(1, 100) < accuracy)
             {
                 float myDefense = other.physicalDefense;
