@@ -27,8 +27,6 @@ public class CombatManager : MonoBehaviour
         {
             characters.Add(enemy);
         }
-
-        Debug.Log("Turn Change");
         characters[0].TurnChanger();
         characters[0].OnTurnStart();
     }
@@ -55,7 +53,6 @@ public class CombatManager : MonoBehaviour
 
             OrderCharacters();
 
-            Debug.Log("Turn Change");
             characters[0].TurnChanger();
             characters[0].OnTurnStart();
             turnFinished = false;
