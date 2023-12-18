@@ -39,9 +39,12 @@ public class CombatManager : MonoBehaviour
         {
             characters[0].OnTurnUpdate();
             if (characters[0].IsFinished())
+            {
+                Debug.Log("Coroutine");
                 StartCoroutine(WaitBetweenActions());
+            }
         }
-        if (turnFinished)
+        else if (characters[0].IsFinished())
         {
             RemoveDeadCharacters();
 
@@ -57,6 +60,25 @@ public class CombatManager : MonoBehaviour
             characters[0].OnTurnStart();
             turnFinished = false;
         }
+        //if (turnFinished)
+        //{
+
+        //    Debug.Log("Finished Turn");
+        //    RemoveDeadCharacters();
+
+        //    if (CheckGameOver())
+        //        EndCombat();
+
+        //    characters[0].OnTurnEnd();
+
+        //    OrderCharacters();
+
+        //    Debug.Log("Turn Change");
+        //    characters[0].TurnChanger();
+        //    characters[0].OnTurnStart();
+        //    turnFinished = false;
+        //}
+
     }
 
     IEnumerator WaitBetweenActions()

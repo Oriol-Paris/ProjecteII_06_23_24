@@ -26,6 +26,7 @@ public abstract class Character : MonoBehaviour
 
     protected bool isInmortal = false;
     private bool defenseCalled = false;
+    protected bool attackAnimation;
 
     [SerializeField]
     protected int accuracy;
@@ -62,46 +63,68 @@ public abstract class Character : MonoBehaviour
         mana = maxMana;
         physicalDefense = resistance * 0.7f + strength * 0.3f;
         magicalDefense = resistance * 0.7f + intelligence * 0.3f;
-    }   
+    }
 
+    protected IEnumerator AttackMove()
+    {
+
+        float timePassed = 0.0f;
+        float maxTime = 2.0f;
+        Debug.Log("Waiting for attack");
+        while (timePassed < maxTime || Input.anyKey)
+        {
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log("Done");
+        attackAnimation = true;
+
+    }
     protected virtual void PhysiqueDamage(Character other, int atkPow)
     {
-        if (Random.Range(1, 100) < accuracy)
+        
+        if (attackAnimation)
         {
-            float myDefense = other.physicalDefense;
-
-            if (defenseCalled)
-                other.physicalDefense = physicalDefense * 2.0f;
-
-            float atkVal = 0.01f *Random.Range(85,100) * (((0.2f * level + 1) * strength * atkPow)/ (25.0f* other.physicalDefense) + 2) ;
-            if (Random.Range(1, 100) < luck * 1.25)
-                atkVal = atkVal * 1.5f;
-            other.health -= atkVal;
-            string atkMessage = "Attack Connected! -> " + atkVal.ToString() + " damage";
-
-            Debug.Log(atkMessage);
-
-            if(defenseCalled)
+            Debug.Log("Attacking");
+            if (Random.Range(1, 100) < accuracy)
             {
-                defenseCalled = false;
-                other.physicalDefense = myDefense;
-            }
+                float myDefense = other.physicalDefense;
 
-            if (other.GetIsInmortal())
+                if (defenseCalled)
+                    other.physicalDefense = physicalDefense * 2.0f;
+
+                float atkVal = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * strength * atkPow) / (25.0f * other.physicalDefense) + 2);
+                if (Random.Range(1, 100) < luck * 1.25)
+                    atkVal = atkVal * 1.5f;
+                other.health -= atkVal;
+                string atkMessage = "Attack Connected! -> " + atkVal.ToString() + " damage";
+
+                Debug.Log(atkMessage);
+
+                if (defenseCalled)
+                {
+                    defenseCalled = false;
+                    other.physicalDefense = myDefense;
+                }
+
+                if (other.GetIsInmortal())
+                {
+                    if (other.health <= 0)
+                        other.health = 1;
+                    Debug.Log("Enemy is Inmortal");
+                }
+            }
+            else
             {
-                if (other.health <= 0)
-                    other.health = 1;
-                Debug.Log("Enemy is Inmortal");
+                Debug.Log("Attack Missed!");
+            }
+            if (other.health < 0)
+            {
+                Destroy(other.gameObject);
             }
         }
-        else
-        {
-            Debug.Log("Attack Missed!");
-        }
-        if (other.health < 0 )
-        {
-            Destroy(other.gameObject);
-        }
+        
+        
     }
     protected virtual void MagicDamage(Character other, int atkPow)
     {
