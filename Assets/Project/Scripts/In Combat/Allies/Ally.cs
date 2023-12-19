@@ -16,6 +16,8 @@ public class Ally : Character
     private bool secondTarget = false;
     private bool thirdTarget = false;
     public bool usingSkill = false;
+    public bool multiSkill2 = false;
+    public bool multiSkill3 = false;
 
     private int defaultAttackPower = 10;
 
@@ -74,7 +76,7 @@ public class Ally : Character
         usingSkill = false;
         sr.color = Color.white;
     }
-    protected override IEnumerator AttackMove()
+    public override IEnumerator AttackMove()
     {
         IEnumerator AttackMove = base.AttackMove();
         while (AttackMove.MoveNext())
@@ -83,9 +85,20 @@ public class Ally : Character
         }
         
         attackAnimation = true;
+        if(attackPressed)
         PhysiqueDamage(en1, defaultAttackPower);
+        if (skillPressed)
+        {
+            if (multiSkill2)
+                MultiTarget2(skill.atkPow);
+            if (multiSkill3)
+                MultiTarget3(skill.atkPow);
+        }
         attackPressed = false;
+        skillPressed = false;
         enemy1Targeted = false;
+        enemy2Targeted = false;
+        enemy3Targeted = false;
         OnTurnEnd();
 
     }
@@ -99,7 +112,8 @@ public class Ally : Character
             {
                 StartCoroutine(AttackMove());
             }
-            attackPressed = false;
+            else
+                attackPressed = false;
         }
         if(defensePressed)
         {
@@ -121,7 +135,7 @@ public class Ally : Character
             enemy1Targeted = false;
             enemy2Targeted = false;
             enemy3Targeted = false;
-            skillPressed = false;
+            //skillPressed = false;
             Debug.Log("Skill Called");
         }
         if(bagPressed)

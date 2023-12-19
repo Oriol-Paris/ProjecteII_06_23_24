@@ -65,7 +65,7 @@ public abstract class Character : MonoBehaviour
         magicalDefense = resistance * 0.7f + intelligence * 0.3f;
     }
 
-    protected virtual IEnumerator AttackMove()
+    public virtual IEnumerator AttackMove()
     {
 
         float timePassed = 0.0f;
@@ -164,6 +164,10 @@ public abstract class Character : MonoBehaviour
     {
         if (Random.Range(1, 100) < accuracy)
         {
+
+            float myDefense1 = other1.magicalDefense;
+            float myDefense2 = other2.magicalDefense;
+
             float enemy1Defense = other1.resistance * 0.7f + other1.intelligence * 0.3f;
             float enemy2Defense = other2.resistance * 0.7f + other2.intelligence * 0.3f;
             float atk1Val = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * intelligence * atkPow) / (25.0f * enemy1Defense) + 2);
@@ -178,6 +182,26 @@ public abstract class Character : MonoBehaviour
             other2.health -= atk2Val;
             string atkMessage = "Attacks Connected! -> " + atk1Val.ToString() + " damage and " + atk2Val.ToString() + "damage.";
             Debug.Log(atkMessage);
+
+            if (defenseCalled)
+            {
+                defenseCalled = false;
+                other1.magicalDefense = myDefense1;
+                other2.magicalDefense = myDefense2;
+            }
+
+            if (other1.GetIsInmortal())
+            {
+                if (other1.health <= 0)
+                    other1.health = 1;
+                Debug.Log("Enemy is Inmortal");
+            }
+            if (other2.GetIsInmortal())
+            {
+                if (other2.health <= 0)
+                    other2.health = 1;
+                Debug.Log("Enemy is Inmortal");
+            }
         }
         else
         {
@@ -197,6 +221,11 @@ public abstract class Character : MonoBehaviour
     {
         if (Random.Range(1, 100) < accuracy)
         {
+
+            float myDefense1 = other1.magicalDefense;
+            float myDefense2 = other2.magicalDefense;
+            float myDefense3 = other3.magicalDefense;
+
             float enemy1Defense = other1.resistance * 0.7f + other1.intelligence * 0.3f;
             float enemy2Defense = other2.resistance * 0.7f + other2.intelligence * 0.3f;
             float enemy3Defense = other3.resistance * 0.7f + other3.intelligence * 0.3f;
@@ -215,6 +244,33 @@ public abstract class Character : MonoBehaviour
             other3.health -= atk3Val;
             string atkMessage = "Attacks Connected! -> " + atk1Val.ToString() + " damage, " + atk2Val.ToString() + " damage and " + atk3Val.ToString() + "damage.";
             Debug.Log(atkMessage);
+
+            if (defenseCalled)
+            {
+                defenseCalled = false;
+                other1.magicalDefense = myDefense1;
+                other2.magicalDefense = myDefense2;
+                other3.magicalDefense = myDefense3;
+            }
+
+            if (other1.GetIsInmortal())
+            {
+                if (other1.health <= 0)
+                    other1.health = 1;
+                Debug.Log("Enemy is Inmortal");
+            }
+            if (other2.GetIsInmortal())
+            {
+                if (other2.health <= 0)
+                    other2.health = 1;
+                Debug.Log("Enemy is Inmortal");
+            }
+            if (other2.GetIsInmortal())
+            {
+                if (other2.health <= 0)
+                    other2.health = 1;
+                Debug.Log("Enemy is Inmortal");
+            }
         }
         else
         {

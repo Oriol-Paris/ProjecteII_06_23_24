@@ -33,7 +33,17 @@ public class Skill : MonoBehaviour
     }
     public virtual void Use()
     {
-        
+        if (isAlly)
+        {
+            if (casterAllyTop.usingSkill)
+            {
+                casterAllyTop.AttackMove();
+            }
+            if (casterAllyBottom.usingSkill)
+            {
+                casterAllyBottom.AttackMove();
+            }
+        }
     }
     protected void ResourcesUsed()
     {

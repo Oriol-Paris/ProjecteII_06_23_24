@@ -17,15 +17,18 @@ public class Mugetsu : Skill
         {
             if (casterAllyTop.usingSkill)
             {
-                casterAllyTop.MultiTarget2(atkPow);
-                casterAllyTop.OnTurnEnd();
+                casterAllyTop.multiSkill2 = true;
+                //casterAllyTop.MultiTarget2(atkPow);
+                //casterAllyTop.OnTurnEnd();
             }
             if (casterAllyBottom.usingSkill)
             {
-                casterAllyBottom.MultiTarget2(atkPow);
-                casterAllyBottom.OnTurnEnd();
+                casterAllyBottom.multiSkill2 = true;
+                //casterAllyBottom.MultiTarget2(atkPow);
+                //casterAllyBottom.OnTurnEnd();
             }
             
         }
+        base.Use();
     }
 }
