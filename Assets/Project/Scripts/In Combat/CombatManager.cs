@@ -38,18 +38,17 @@ public class CombatManager : MonoBehaviour
             characters[0].OnTurnUpdate();
             if (characters[0].IsFinished())
             {
-                Debug.Log("Coroutine");
                 StartCoroutine(WaitBetweenActions());
             }
         }
-        else if (characters[0].IsFinished())
+        else// if (characters[0].IsFinished())
         {
             RemoveDeadCharacters();
 
             if (CheckGameOver())
                 EndCombat();
 
-            characters[0].OnTurnEnd();
+            //characters[0].OnTurnEnd();
 
             OrderCharacters();
 
@@ -60,17 +59,16 @@ public class CombatManager : MonoBehaviour
         //if (turnFinished)
         //{
 
-        //    Debug.Log("Finished Turn");
+        //    //Debug.Log("Finished Turn");
         //    RemoveDeadCharacters();
 
         //    if (CheckGameOver())
         //        EndCombat();
 
-        //    characters[0].OnTurnEnd();
+        //    //characters[0].OnTurnEnd();
 
         //    OrderCharacters();
 
-        //    Debug.Log("Turn Change");
         //    characters[0].TurnChanger();
         //    characters[0].OnTurnStart();
         //    turnFinished = false;
@@ -83,6 +81,7 @@ public class CombatManager : MonoBehaviour
 
         float timePassed = 0.0f;
         float maxTime = 2.0f;
+        Debug.Log("Coroutine");
         while (timePassed < maxTime && !Input.anyKey)
         {
             timePassed += Time.deltaTime;

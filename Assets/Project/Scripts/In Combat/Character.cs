@@ -80,45 +80,41 @@ public abstract class Character : MonoBehaviour
     }
     protected virtual void PhysiqueDamage(Character other, int atkPow)
     {
-        
-        if (attackAnimation)
+        if (Random.Range(1, 100) < accuracy)
         {
-            if (Random.Range(1, 100) < accuracy)
+            float myDefense = other.physicalDefense;
+
+            if (defenseCalled)
+                other.physicalDefense = physicalDefense * 2.0f;
+
+            float atkVal = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * strength * atkPow) / (25.0f * other.physicalDefense) + 2);
+            if (Random.Range(1, 100) < luck * 1.25)
+                atkVal = atkVal * 1.5f;
+            other.health -= atkVal;
+            string atkMessage = "Attack Connected! -> " + atkVal.ToString() + " damage";
+
+            Debug.Log(atkMessage);
+
+            if (defenseCalled)
             {
-                float myDefense = other.physicalDefense;
-
-                if (defenseCalled)
-                    other.physicalDefense = physicalDefense * 2.0f;
-
-                float atkVal = 0.01f * Random.Range(85, 100) * (((0.2f * level + 1) * strength * atkPow) / (25.0f * other.physicalDefense) + 2);
-                if (Random.Range(1, 100) < luck * 1.25)
-                    atkVal = atkVal * 1.5f;
-                other.health -= atkVal;
-                string atkMessage = "Attack Connected! -> " + atkVal.ToString() + " damage";
-
-                Debug.Log(atkMessage);
-
-                if (defenseCalled)
-                {
-                    defenseCalled = false;
-                    other.physicalDefense = myDefense;
-                }
-
-                if (other.GetIsInmortal())
-                {
-                    if (other.health <= 0)
-                        other.health = 1;
-                    Debug.Log("Enemy is Inmortal");
-                }
+                defenseCalled = false;
+                other.physicalDefense = myDefense;
             }
-            else
+
+            if (other.GetIsInmortal())
             {
-                Debug.Log("Attack Missed!");
+                if (other.health <= 0)
+                    other.health = 1;
+                Debug.Log("Enemy is Inmortal");
             }
-            if (other.health < 0)
-            {
-                Destroy(other.gameObject);
-            }
+        }
+        else
+        {
+            Debug.Log("Attack Missed!");
+        }
+        if (other.health < 0)
+        {
+            Destroy(other.gameObject);
         }
         
         
