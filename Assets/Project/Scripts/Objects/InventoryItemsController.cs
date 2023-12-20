@@ -26,10 +26,10 @@ public class InventoryItemsController : MonoBehaviour
     {
         switch(item.itemType)
         {
-            case Item.ItemType.HealthPotion:
+            case Item.ItemType.POTION:
 
                 break;
-            case Item.ItemType.ManaPotion: 
+            case Item.ItemType.ATK_BUFF: 
 
                 break;
         }
