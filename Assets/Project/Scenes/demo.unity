@@ -1185,6 +1185,7 @@ GameObject:
   - component: {fileID: 299238336}
   - component: {fileID: 299238335}
   - component: {fileID: 299238334}
+  - component: {fileID: 299238337}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1266,6 +1267,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &299238337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299238333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8a33c9523cbba4bb938bdb151910f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  start: 0
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.4107711
+      outSlope: 1.4107711
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.12928927
+      value: 0.18239757
+      inSlope: 0.57879734
+      outSlope: 0.57879734
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.43260834
+      value: 0.105604336
+      inSlope: -0.2240397
+      outSlope: -0.2240397
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: -0.0049819946
+      inSlope: -0.194903
+      outSlope: -0.194903
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &321623216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,6 +1984,8 @@ MonoBehaviour:
   accuracy: 85
   sr: {fileID: 392239290}
   skillUsed: 0
+  getHit: 0
+  hitColor: 0
   usingSkill: 0
   skill: {fileID: 1238860219}
   skillMenu: {fileID: 1606573404}
@@ -3453,6 +3512,8 @@ MonoBehaviour:
   accuracy: 75
   sr: {fileID: 914802649}
   skillUsed: 0
+  getHit: 0
+  hitColor: 0
   allies:
   - {fileID: 1370140002}
   - {fileID: 392239289}
@@ -4847,6 +4908,8 @@ MonoBehaviour:
   accuracy: 75
   sr: {fileID: 1189247236}
   skillUsed: 0
+  getHit: 0
+  hitColor: 0
   allies:
   - {fileID: 1370140002}
   - {fileID: 392239289}
@@ -5835,6 +5898,8 @@ MonoBehaviour:
   accuracy: 95
   sr: {fileID: 1370140003}
   skillUsed: 0
+  getHit: 0
+  hitColor: 0
   usingSkill: 0
   skill: {fileID: 1238860219}
   skillMenu: {fileID: 1606573404}
@@ -7595,6 +7660,8 @@ MonoBehaviour:
   accuracy: 75
   sr: {fileID: 1556038740}
   skillUsed: 0
+  getHit: 0
+  hitColor: 0
   allies:
   - {fileID: 1370140002}
   - {fileID: 392239289}

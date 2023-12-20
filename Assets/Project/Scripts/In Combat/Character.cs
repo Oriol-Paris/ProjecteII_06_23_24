@@ -40,6 +40,8 @@ public abstract class Character : MonoBehaviour
     
 
     public bool skillUsed = false;
+    public bool getHit = false;
+    public bool hitColor = false;
 
     protected bool GetIsInmortal() { return isInmortal;}
 
@@ -78,10 +80,25 @@ public abstract class Character : MonoBehaviour
         }
         Debug.Log("Done");
     }
+    public virtual IEnumerator GetHit()
+    {
+
+        float timePassed = 0.0f;
+        float maxTime = 1.0f;
+        Debug.Log("Colour Coloroutine");
+        while (timePassed < maxTime || Input.anyKey)
+        {
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+        hitColor = true;
+        Debug.Log("Done");
+    }
     protected virtual void PhysiqueDamage(Character other, int atkPow)
     {
         if (Random.Range(1, 100) < accuracy)
         {
+            getHit = true;
             float myDefense = other.physicalDefense;
 
             if (defenseCalled)
@@ -92,7 +109,20 @@ public abstract class Character : MonoBehaviour
                 atkVal = atkVal * 1.5f;
             other.health -= atkVal;
             string atkMessage = "Attack Connected! -> " + atkVal.ToString() + " damage";
-
+            ScreenShake.instance.start = true;
+            //if (getHit)
+            //{
+                //getHit = false;
+                //Debug.Log("Change Color");
+                //other.sr.color = new Color(0, 0, 255, 1);
+                //StartCoroutine(GetHit());
+                //if (hitColor)
+                //{
+                //    hitColor = false;
+                //    other.sr.color = new Color(0, 255, 255, 1);
+                //}
+            //}
+            
             Debug.Log(atkMessage);
 
             if (defenseCalled)

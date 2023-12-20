@@ -12,23 +12,29 @@ public class Mugetsu : Skill
 
     public override void Use()
     {
-        ResourcesUsed();
+        //ResourcesUsed();
+        base.Use();
         if(isAlly)
         {
             if (casterAllyTop.usingSkill)
             {
-                casterAllyTop.multiSkill2 = true;
-                //casterAllyTop.MultiTarget2(atkPow);
-                //casterAllyTop.OnTurnEnd();
+                if (casterAllyTop.AttackAnimation())
+                {
+                    casterAllyTop.MultiTarget2(atkPow);
+                    casterAllyTop.OnTurnEnd();
+                    casterAllyTop.SetAttackAnimationFalse();
+                }
             }
             if (casterAllyBottom.usingSkill)
             {
-                casterAllyBottom.multiSkill2 = true;
-                //casterAllyBottom.MultiTarget2(atkPow);
-                //casterAllyBottom.OnTurnEnd();
+                if (casterAllyTop.AttackAnimation())
+                {
+                    casterAllyBottom.MultiTarget2(atkPow);
+                    casterAllyBottom.OnTurnEnd();
+                    casterAllyBottom.SetAttackAnimationFalse();
+                }
             }
             
         }
-        base.Use();
     }
 }
