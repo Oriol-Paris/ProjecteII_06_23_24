@@ -15,7 +15,11 @@ public class Enemy : Character
     {
         allies = allies.OrderBy(ally => ally.GetHealth()).ToList();
         if (!(allies[0].GetHealth() > 0))
+        {
+            allies[1].sr.color = new Color(255, 0, 0, 1);
             return allies[1];
+        }
+        allies[0].sr.color = new Color(255, 0, 0, 1);
         return allies[0];
     }
 
@@ -31,8 +35,10 @@ public class Enemy : Character
     //}
     public void SetAsTarget()
     {
+        
         foreach (Ally ally in allies)
         {
+            
             if (!ally.IsFinished())
             {
                 //ally.SetPossibleTarget(this);
@@ -40,16 +46,19 @@ public class Enemy : Character
                 {
                     Debug.Log("Target 1 selected");
                     ally.SetTarget(this);
+                    sr.color = new Color(255, 0, 0, 1);
                 }
                 else if(ally.Has2ndTarget() && ally.Targeted1st() && !ally.Targeted2nd() /*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
                 {
                     Debug.Log("Target 2 selected");
                     ally.Set2ndTarget(this);
+                    sr.color = new Color(255, 0, 0, 1);
                 }  
                 else if (ally.Has3rdTarget() && ally.Targeted1st() && ally.Targeted2nd() && !ally.Targeted3rd()/*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
                 {
                     Debug.Log("Target 3 selected");
                     ally.Set3rdTarget(this);
+                    sr.color = new Color(255, 0, 0, 1);
                 }
             }
         }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Ally : Character
 {
-    private Enemy en = null;
+    public Enemy en = null;
     private Enemy en1 = null;
     private Enemy en2 = null;
     private Enemy en3 = null;
@@ -47,6 +47,7 @@ public class Ally : Character
     public void SetTarget(Enemy enemy)
     {
         en1 = enemy;
+        en1.sr.color = new Color(0, 255, 255, 1);
         enemy1Targeted = true;
     }
     public void Set2ndTarget(Enemy enemy2)
@@ -102,11 +103,14 @@ public class Ally : Character
     }
     public override void OnTurnUpdate()
     {
+        en.sr.color = new Color(255, 0, 0, 1);
+        if (en1 != null)
+        en1.sr.color = new Color(255, 0, 0, 1);
         if (attackPressed)
         {
             
-            
-            if(enemy1Targeted)
+
+            if (enemy1Targeted)
             {
                 //StartCoroutine(AttackMove());
                     //if (attackAnimation)

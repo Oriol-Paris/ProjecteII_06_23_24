@@ -1986,6 +1986,7 @@ MonoBehaviour:
   skillUsed: 0
   getHit: 0
   hitColor: 0
+  en: {fileID: 914802648}
   usingSkill: 0
   skill: {fileID: 1238860219}
   skillMenu: {fileID: 1606573404}
@@ -5900,6 +5901,7 @@ MonoBehaviour:
   skillUsed: 0
   getHit: 0
   hitColor: 0
+  en: {fileID: 0}
   usingSkill: 0
   skill: {fileID: 1238860219}
   skillMenu: {fileID: 1606573404}
@@ -8185,7 +8187,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryCanvas: {fileID: 1914161313}
-  items: []
   itemContent: {fileID: 647161805}
   inventoryItem: {fileID: 890147946}
   enableRemove: {fileID: 1593404102}

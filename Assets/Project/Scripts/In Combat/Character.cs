@@ -82,7 +82,6 @@ public abstract class Character : MonoBehaviour
     }
     public virtual IEnumerator GetHit()
     {
-
         float timePassed = 0.0f;
         float maxTime = 1.0f;
         Debug.Log("Colour Coloroutine");
@@ -108,6 +107,7 @@ public abstract class Character : MonoBehaviour
             if (Random.Range(1, 100) < luck * 1.25)
                 atkVal = atkVal * 1.5f;
             other.health -= atkVal;
+            other.sr.color = new Color(255, 0, 0, 1);
             string atkMessage = "Attack Connected! -> " + atkVal.ToString() + " damage";
             ScreenShake.instance.start = true;
             //if (getHit)
@@ -165,6 +165,7 @@ public abstract class Character : MonoBehaviour
                 atkVal = atkVal * 1.5f;
             other.health -= atkVal;
             string atkMessage = "Attack Connected! -> " + atkVal.ToString() + " damage";
+            ScreenShake.instance.start = true;
             Debug.Log(atkMessage);
 
             if(defenseCalled)
@@ -211,6 +212,7 @@ public abstract class Character : MonoBehaviour
             other1.health -= atk1Val;
             other2.health -= atk2Val;
             string atkMessage = "Attacks Connected! -> " + atk1Val.ToString() + " damage and " + atk2Val.ToString() + "damage.";
+            ScreenShake.instance.start = true;
             Debug.Log(atkMessage);
 
             if (defenseCalled)
@@ -273,6 +275,7 @@ public abstract class Character : MonoBehaviour
             other2.health -= atk2Val;
             other3.health -= atk3Val;
             string atkMessage = "Attacks Connected! -> " + atk1Val.ToString() + " damage, " + atk2Val.ToString() + " damage and " + atk3Val.ToString() + "damage.";
+            ScreenShake.instance.start = true;
             Debug.Log(atkMessage);
 
             if (defenseCalled)
