@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,6 +10,7 @@ public class UiItem : MonoBehaviour
     public Image img;
     public TextMeshProUGUI name;
     public TextMeshProUGUI amount;
+    
     public void Setup(Sprite s, string name, int amount)
     {
         img.sprite = s;
@@ -20,4 +22,6 @@ public class UiItem : MonoBehaviour
     {
         this.amount.text = newAmount.ToString();
     }
+
+    
 }

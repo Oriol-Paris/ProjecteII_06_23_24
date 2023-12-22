@@ -39,8 +39,6 @@ public class Ally : Character
         skillButton.onClick.AddListener(() => skillPressed = true);
         bagButton.onClick.AddListener(() => bagPressed = true);
         fleeButton.onClick.AddListener(() => fleePressed = true);
-
-        
     }
     public void SetAllyTarget(Ally ally)
     {
