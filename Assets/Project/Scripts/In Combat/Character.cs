@@ -35,7 +35,9 @@ public abstract class Character : MonoBehaviour
     protected bool attackAnimation;
     protected bool skillAnimation;
     [SerializeField]
-    private AnimationCurve curve;
+    private AnimationCurve curveY;
+    [SerializeField]
+    private AnimationCurve curveX;
 
     [SerializeField]
     protected int accuracy;
@@ -82,72 +84,32 @@ public abstract class Character : MonoBehaviour
     {
 
         Vector3 startPosition = transform.position;
-        Vector3 endPosition = transform.position + newYPosition;
+        Vector3 endPositionY = transform.position + newYPosition;
+        Vector3 endPositionX = transform.position + newXPosition;
         float timePassed = 0f;
-        float maxTime = 1f;
+        float maxTime = 0.5f;
         Debug.Log("Waiting for attack");
         while (timePassed < maxTime)
         {
             timePassed += Time.deltaTime;
-            float strength = curve.Evaluate(timePassed / maxTime);
-            transform.localPosition = Vector3.Lerp(startPosition, transform.position, strength);
+            float strength = curveY.Evaluate(timePassed / maxTime);
+            transform.position = Vector3.Lerp(startPosition, endPositionY, strength);
             yield return null;
         }
+        timePassed = 0.25f;
+        maxTime = 0.25f;
+        while (timePassed > 0)
+        {
+            timePassed -= Time.deltaTime;
+            float strength = curveX.Evaluate(timePassed / maxTime);
+            transform.position = Vector3.Lerp(endPositionX, startPosition, strength);
+            yield return null;
+        }
+
         transform.position = startPosition;
         
         
         
-        //while (timePassed <= maxTime || Input.anyKey)
-        //{
-        //    Debug.Log("up");
-        //    timePassed += Time.deltaTime;
-        //    float strength = curve.Evaluate(timePassed / duration);
-        //    transform.position = transform.position + newYPosition;
-        //    yield return null;
-        //}
-
-        //while (timePassed <= maxTime || Input.anyKey)
-        //{
-        //    Debug.Log("up");
-        //    timePassed += Time.deltaTime;
-        //    transform.position = transform.position + newYPosition;
-        //    yield return null;
-        //}
-        //while (timePassed >= 0 || Input.anyKey)
-        //{
-        //    Debug.Log("down");
-        //    timePassed -= Time.deltaTime;
-        //    transform.position = transform.position - newYPosition;
-        //    yield return null;
-        //}
-        //while (timePassed <= maxTime || Input.anyKey)
-        //{
-        //    Debug.Log("up");
-        //    timePassed += Time.deltaTime;
-        //    transform.position = transform.position + newYPosition;
-        //    yield return null;
-        //}
-        //while (timePassed >= 0 || Input.anyKey)
-        //{
-        //    Debug.Log("down");
-        //    timePassed -= Time.deltaTime;
-        //    transform.position = transform.position - newYPosition;
-        //    yield return null;
-        //}
-        //while (timePassed <= maxTime || Input.anyKey)
-        //{
-        //    Debug.Log("forward");
-        //    timePassed += Time.deltaTime;
-        //    transform.position = transform.position + newXPosition;
-        //    yield return null;
-        //}
-        //while (timePassed >= 0 || Input.anyKey)
-        //{
-        //    Debug.Log("backward");
-        //    timePassed -= Time.deltaTime;
-        //    transform.position = transform.position - newXPosition;
-        //    yield return null;
-        //}
         attackAnimation = true;
         Debug.Log("Done");
     }
