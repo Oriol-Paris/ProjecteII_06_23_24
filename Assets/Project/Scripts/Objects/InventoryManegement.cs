@@ -16,8 +16,6 @@ public class InventoryManegement : MonoBehaviour
     public Transform itemContent;
     public GameObject inventoryItem;
 
-    public Toggle enableRemove;
-
     public InventoryItemsController[] inventoryItems;
 
     private void Awake()
@@ -39,7 +37,7 @@ public class InventoryManegement : MonoBehaviour
         UiItem uiItem = Instantiate(inventoryItem, itemContent).GetComponent<UiItem>();
         uiItem.Setup(item.icon, item.itemName, 1);
 
-        item.uiObject = uiItem;
+        item.uiObject = uiItem; 
 
         items.Add(item, 1);
     }
@@ -61,21 +59,4 @@ public class InventoryManegement : MonoBehaviour
         inventoryCanvas.SetActive(true);
     }
 
-    public void EnableItemsRemove()
-    {
-        if(enableRemove.isOn)
-        {
-            foreach(Transform item in itemContent)
-            {
-                item.Find("RemoveButton").gameObject.SetActive(true);
-            }
-        }
-        else
-        {
-            foreach(Transform item in itemContent)
-            {
-                item.Find("RemoveButton").gameObject.SetActive(false);
-            }
-        }
-    }
 }

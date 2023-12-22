@@ -7,8 +7,6 @@ public class InventoryItemsController : MonoBehaviour
 {
     Item item;
 
-    public Button removeButton;
-
     public void RemoveItem()
     {
         InventoryManegement.Instance.Remove(item);
@@ -21,17 +19,5 @@ public class InventoryItemsController : MonoBehaviour
         item = newItem;
     }
 
-
-    public void UseItem()
-    {
-        switch(item.itemType)
-        {
-            case Item.ItemType.POTION:
-
-                break;
-            case Item.ItemType.ATK_BUFF: 
-
-                break;
-        }
-    }
+   
 }
