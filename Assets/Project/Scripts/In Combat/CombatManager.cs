@@ -36,10 +36,10 @@ public class CombatManager : MonoBehaviour
         if (!characters[0].IsFinished())
         {
             characters[0].OnTurnUpdate();
-            if (characters[0].IsFinished())
-            {
-                StartCoroutine(WaitBetweenActions());
-            }
+            //if (characters[0].IsFinished())
+            //{
+            //    StartCoroutine(WaitBetweenActions());
+            //}
         }
         else// if (characters[0].IsFinished())
         {

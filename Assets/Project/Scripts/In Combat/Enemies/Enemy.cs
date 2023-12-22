@@ -6,9 +6,8 @@ using UnityEngine.TextCore.Text;
 
 public class Enemy : Character
 {
-    [SerializeField]
-    private List<Ally> allies;
 
+    private bool target = false;
     int defaultAttackPower = 10;
 
     public Ally SetTarget()
@@ -20,6 +19,7 @@ public class Enemy : Character
             return allies[1];
         }
         allies[0].sr.color = new Color(255, 0, 0, 1);
+        target = true;
         return allies[0];
     }
 
@@ -46,19 +46,16 @@ public class Enemy : Character
                 {
                     Debug.Log("Target 1 selected");
                     ally.SetTarget(this);
-                    sr.color = new Color(255, 0, 0, 1);
                 }
                 else if(ally.Has2ndTarget() && ally.Targeted1st() && !ally.Targeted2nd() /*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
                 {
                     Debug.Log("Target 2 selected");
                     ally.Set2ndTarget(this);
-                    sr.color = new Color(255, 0, 0, 1);
                 }  
                 else if (ally.Has3rdTarget() && ally.Targeted1st() && ally.Targeted2nd() && !ally.Targeted3rd()/*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
                 {
                     Debug.Log("Target 3 selected");
                     ally.Set3rdTarget(this);
-                    sr.color = new Color(255, 0, 0, 1);
                 }
             }
         }
@@ -66,23 +63,46 @@ public class Enemy : Character
 
     public override void OnTurnStart()
     {
-        sr.color = new Color(255, 0, 0, 1);
     }
 
     public override void OnTurnEnd()
     {
         activeTurn = false;
+        allies[0].sr.color = Color.white;
+        allies[1].sr.color = Color.white;
+        target = true;
     }
+    public override IEnumerator AttackMove()
+    {
+        newYPosition = new Vector3(0, 0.0005f, 0);
+        newXPosition = new Vector3(-0.0025f, 0, 0);
+        IEnumerator AttackMove = base.AttackMove();
+        while (AttackMove.MoveNext())
+        {
+            yield return AttackMove.Current;
+        }
 
+        attackAnimation = true;
+    }
     public override void OnTurnUpdate()
     {
         Ally a = SetTarget();
-        if (a != null)
+        a.sr.color = new Color(255, 0, 0, 1);
+        if (target)
+        {
+            Debug.Log("Target selected");
+            a.sr.color = new Color(255, 0, 0, 1);
+            StartCoroutine(AttackMove());
+            target = false;
+        }
+        if (attackAnimation)
         {
             PhysiqueDamage(SetTarget(), defaultAttackPower);
+            Debug.Log("End Turn");
+            OnTurnEnd();
+            attackAnimation = false;
         }
-        Debug.Log("End Turn");
-        OnTurnEnd();
+        
     }
 
     public override void ForceFinishTurn()

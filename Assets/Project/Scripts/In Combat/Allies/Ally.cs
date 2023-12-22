@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class Ally : Character
 {
     public Enemy en = null;
-    private Enemy en1 = null;
-    private Enemy en2 = null;
-    private Enemy en3 = null;
+    public Enemy en1 = null;
+    public Enemy en2 = null;
+    public Enemy en3 = null;
+    public Ally ally1 = null;
+    public Ally ally2 = null;
+    public Ally ally3 = null;
     private bool enemy1Targeted = false;
     private bool enemy2Targeted = false;
     private bool enemy3Targeted = false;
@@ -39,15 +42,26 @@ public class Ally : Character
 
         
     }
-
+    public void SetAllyTarget(Ally ally)
+    {
+        ally1 = ally;
+    }
+    public void Set2ndAllyTarget(Ally ally)
+    {
+        ally2 = ally;
+    }
+    public void Set3rdAllyTarget(Ally ally)
+    {
+        ally3 = ally;
+    }
     public void SetPossibleTarget(Enemy enemy)
     {
         en = enemy;
     }
+
     public void SetTarget(Enemy enemy)
     {
         en1 = enemy;
-        en1.sr.color = new Color(0, 255, 255, 1);
         enemy1Targeted = true;
     }
     public void Set2ndTarget(Enemy enemy2)
@@ -61,68 +75,114 @@ public class Ally : Character
         enemy3Targeted = true;
     }
 
+    public void SetAsTarget()
+    {
+
+        foreach (Ally ally in allies)
+        {
+
+            if (!ally.IsFinished())
+            {
+                //ally.SetPossibleTarget(this);
+                if (ally.ally1 == null)
+                {
+                    Debug.Log("Ally target 1 selected");
+                    ally.SetAllyTarget(this);
+                }
+                else if (ally.Has2ndTarget() && ally.ally1 != null && ally.ally2 == null /*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
+                {
+                    Debug.Log("Ally target 2 selected");
+                    ally.Set2ndAllyTarget(this);
+                }
+                else if (ally.Has3rdTarget() && ally.ally1 != null && ally.ally1 != null && ally.ally3 == null/*&& ally.Enemy1Targeted != ally.PossibleEnemyTargeted()*/)
+                {
+                    Debug.Log("Ally target 3 selected");
+                    ally.Set3rdAllyTarget(this);
+                }
+            }
+        }
+    }
     public override void OnTurnStart()
     {
         skillMenu.changeSkillMenu();
         sr.color = new Color(0, 255, 255, 1);
+        en = null;
+        en1 = null;
+        en2 = null;
+        en3 = null;
     }
 
     public override void OnTurnEnd()
     {
+        sr.color = Color.white;
         attackAnimation = false;
         Debug.Log("FinishTurn");
         activeTurn = false;
         usingSkill = false;
-        sr.color = Color.white;
+        en = null;
+        en1 = null;
+        en2 = null;
+        en3 = null;
+        ally1 = null;
+        ally2 = null;
+        ally3 = null;
     }
     public override IEnumerator AttackMove()
     {
+        //newYPosition =new  Vector3(0, 0.01f, 0);
+        //newXPosition =new  Vector3(0.1f, 0, 0);
         IEnumerator AttackMove = base.AttackMove();
         while (AttackMove.MoveNext())
         {
             yield return AttackMove.Current;
         }
-        
-        attackAnimation = true;
-        //if(attackPressed)
-        //PhysiqueDamage(en1, defaultAttackPower);
-        //if (skillPressed)
-        //{
-        //    if (multiSkill2)
-        //        MultiTarget2(skill.atkPow);
-        //    if (multiSkill3)
-        //        MultiTarget3(skill.atkPow);
-        //}
-        //attackPressed = false;
-        //skillPressed = false;
-        //enemy1Targeted = false;
-        //enemy2Targeted = false;
-        //enemy3Targeted = false;
-        //OnTurnEnd();
 
+        attackAnimation = true;
     }
     public override void OnTurnUpdate()
     {
-        en.sr.color = new Color(255, 0, 0, 1);
         if (en1 != null)
-        en1.sr.color = new Color(255, 0, 0, 1);
+            en1.sr.color = new Color(255, 0, 0, 1);
+        if (en2 != null)
+            en2.sr.color = new Color(255, 0, 0, 1);
+        if (en3 != null)
+            en3.sr.color = new Color(255, 0, 0, 1);
+        if (ally1 != null)
+            ally1.sr.color = new Color(255, 0, 0, 1);
+        if (ally2 != null)
+            ally2.sr.color = new Color(255, 0, 0, 1);
+        if (ally3 != null)
+            ally3.sr.color = new Color(255, 0, 0, 1);
+        if (attackAnimation)
+        {
+            PhysiqueDamage(en1, defaultAttackPower);
+            attackAnimation = false;
+            OnTurnEnd();
+        }
         if (attackPressed)
         {
             
 
             if (enemy1Targeted)
             {
-                //StartCoroutine(AttackMove());
+                StartCoroutine(AttackMove());
                     //if (attackAnimation)
                     //{
-                        PhysiqueDamage(en1, defaultAttackPower);
+                        
                         enemy1Targeted = false;
-                        attackAnimation = false;
-                        OnTurnEnd();
+                        
+                if (en1 != null)
+                    en1.sr.color = Color.white;
+                if (en2 != null)
+                        en2.sr.color = Color.white;
+                    if (en3 != null)
+                        en3.sr.color = Color.white;
+                    
                     //}
             }
             //else
-                attackPressed = false;
+            
+            attackPressed = false;
         }
         if(defensePressed)
         {

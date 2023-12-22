@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
+    [SerializeField]
+    protected List<Ally> allies;
     [field: SerializeField]
     public int level { get; set; }
     [field: SerializeField]
@@ -26,11 +28,20 @@ public abstract class Character : MonoBehaviour
 
     protected bool isInmortal = false;
     private bool defenseCalled = false;
+    [SerializeField]
+    protected Vector3 newYPosition = new Vector3(0, 0.01f, 0);
+    [SerializeField]
+    protected Vector3 newXPosition = new Vector3(0.05f, 0, 0);
     protected bool attackAnimation;
+    protected bool skillAnimation;
+    [SerializeField]
+    private AnimationCurve curve;
 
     [SerializeField]
     protected int accuracy;
     protected bool activeTurn;
+    [SerializeField]
+    protected GameObject gO;
 
     public SpriteRenderer sr;
 
@@ -70,34 +81,99 @@ public abstract class Character : MonoBehaviour
     public virtual IEnumerator AttackMove()
     {
 
-        float timePassed = 0.0f;
-        float maxTime = 2.0f;
+        Vector3 startPosition = transform.position;
+        Vector3 endPosition = transform.position + newYPosition;
+        float timePassed = 0f;
+        float maxTime = 1f;
         Debug.Log("Waiting for attack");
-        while (timePassed < maxTime || Input.anyKey)
+        while (timePassed < maxTime)
         {
             timePassed += Time.deltaTime;
+            float strength = curve.Evaluate(timePassed / maxTime);
+            transform.localPosition = Vector3.Lerp(startPosition, transform.position, strength);
             yield return null;
         }
+        transform.position = startPosition;
+        
+        
+        
+        //while (timePassed <= maxTime || Input.anyKey)
+        //{
+        //    Debug.Log("up");
+        //    timePassed += Time.deltaTime;
+        //    float strength = curve.Evaluate(timePassed / duration);
+        //    transform.position = transform.position + newYPosition;
+        //    yield return null;
+        //}
+
+        //while (timePassed <= maxTime || Input.anyKey)
+        //{
+        //    Debug.Log("up");
+        //    timePassed += Time.deltaTime;
+        //    transform.position = transform.position + newYPosition;
+        //    yield return null;
+        //}
+        //while (timePassed >= 0 || Input.anyKey)
+        //{
+        //    Debug.Log("down");
+        //    timePassed -= Time.deltaTime;
+        //    transform.position = transform.position - newYPosition;
+        //    yield return null;
+        //}
+        //while (timePassed <= maxTime || Input.anyKey)
+        //{
+        //    Debug.Log("up");
+        //    timePassed += Time.deltaTime;
+        //    transform.position = transform.position + newYPosition;
+        //    yield return null;
+        //}
+        //while (timePassed >= 0 || Input.anyKey)
+        //{
+        //    Debug.Log("down");
+        //    timePassed -= Time.deltaTime;
+        //    transform.position = transform.position - newYPosition;
+        //    yield return null;
+        //}
+        //while (timePassed <= maxTime || Input.anyKey)
+        //{
+        //    Debug.Log("forward");
+        //    timePassed += Time.deltaTime;
+        //    transform.position = transform.position + newXPosition;
+        //    yield return null;
+        //}
+        //while (timePassed >= 0 || Input.anyKey)
+        //{
+        //    Debug.Log("backward");
+        //    timePassed -= Time.deltaTime;
+        //    transform.position = transform.position - newXPosition;
+        //    yield return null;
+        //}
+        attackAnimation = true;
         Debug.Log("Done");
     }
     public virtual IEnumerator GetHit()
     {
         float timePassed = 0.0f;
-        float maxTime = 1.0f;
+        float maxTime = 0.5f;
         Debug.Log("Colour Coloroutine");
+        if (sr != null)
+            sr.color = new Color(1, 1, 1, 0.2f);
+        
         while (timePassed < maxTime || Input.anyKey)
         {
             timePassed += Time.deltaTime;
             yield return null;
         }
+        if(sr != null)
+        sr.color = Color.white;
         hitColor = true;
         Debug.Log("Done");
     }
     protected virtual void PhysiqueDamage(Character other, int atkPow)
     {
-        if (Random.Range(1, 100) < accuracy)
+        if (Random.Range(1, 100) < accuracy && other != null)
         {
-            getHit = true;
+            StartCoroutine(other.GetHit());
             float myDefense = other.physicalDefense;
 
             if (defenseCalled)
@@ -107,22 +183,22 @@ public abstract class Character : MonoBehaviour
             if (Random.Range(1, 100) < luck * 1.25)
                 atkVal = atkVal * 1.5f;
             other.health -= atkVal;
-            other.sr.color = new Color(255, 0, 0, 1);
             string atkMessage = "Attack Connected! -> " + atkVal.ToString() + " damage";
             ScreenShake.instance.start = true;
+            //other.StartCoroutine(GetHit());
             //if (getHit)
             //{
-                //getHit = false;
-                //Debug.Log("Change Color");
-                //other.sr.color = new Color(0, 0, 255, 1);
-                //StartCoroutine(GetHit());
-                //if (hitColor)
-                //{
-                //    hitColor = false;
-                //    other.sr.color = new Color(0, 255, 255, 1);
-                //}
+            //getHit = false;
+            //Debug.Log("Change Color");
+            //other.sr.color = new Color(0, 0, 255, 1);
+            //StartCoroutine(GetHit());
+            //if (hitColor)
+            //{
+            //    hitColor = false;
+            //    other.sr.color = new Color(0, 255, 255, 1);
             //}
-            
+            //}
+
             Debug.Log(atkMessage);
 
             if (defenseCalled)
@@ -141,19 +217,22 @@ public abstract class Character : MonoBehaviour
         else
         {
             Debug.Log("Attack Missed!");
+            if(other != null)
+            other.sr.color = Color.white;
         }
-        if (other.health < 0)
+        if(other != null)
         {
-            Destroy(other.gameObject);
+            if (other.health < 0)
+            {
+                Destroy(other.gameObject);
+            }
         }
-        
-        
     }
     protected virtual void MagicDamage(Character other, int atkPow)
     {
         if (Random.Range(1, 100) < accuracy)
         {
-
+            StartCoroutine(other.GetHit());
             float myDefense = other.magicalDefense;
 
             if(defenseCalled)
@@ -183,6 +262,7 @@ public abstract class Character : MonoBehaviour
         }
         else
         {
+            other.sr.color = Color.white;
             Debug.Log("Attack Missed!");
         }
         if (other.health < 0)
@@ -195,7 +275,8 @@ public abstract class Character : MonoBehaviour
     {
         if (Random.Range(1, 100) < accuracy)
         {
-
+            StartCoroutine(other1.GetHit());
+            StartCoroutine(other2.GetHit());
             float myDefense1 = other1.magicalDefense;
             float myDefense2 = other2.magicalDefense;
 
@@ -237,6 +318,8 @@ public abstract class Character : MonoBehaviour
         }
         else
         {
+            other1.sr.color = Color.white;
+            other2.sr.color = Color.white;
             Debug.Log("Attacks Missed!");
         }
         if (other1.health < 0)
@@ -253,7 +336,9 @@ public abstract class Character : MonoBehaviour
     {
         if (Random.Range(1, 100) < accuracy)
         {
-
+            StartCoroutine(other1.GetHit());
+            StartCoroutine(other2.GetHit());
+            StartCoroutine(other3.GetHit());
             float myDefense1 = other1.magicalDefense;
             float myDefense2 = other2.magicalDefense;
             float myDefense3 = other3.magicalDefense;
@@ -307,6 +392,9 @@ public abstract class Character : MonoBehaviour
         }
         else
         {
+            other1.sr.color = Color.white;
+            other2.sr.color = Color.white;
+            other3.sr.color = Color.white;
             Debug.Log("Attacks Missed!");
         }
         if (other1.health < 0)

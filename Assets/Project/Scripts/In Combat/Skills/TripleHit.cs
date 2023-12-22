@@ -22,7 +22,6 @@ public class TripleHit : Skill
             }
             if (casterAllyBottom.usingSkill)
             {
-                Debug.Log("Use Skill");
                 casterAllyBottom.MultiTarget3(atkPow);
                 casterAllyBottom.OnTurnEnd();
             }
